@@ -1,12 +1,12 @@
 {
     "name": "jobsearch_client",
-    "short_name": "jobsearch_client",
+    "short_name": "Jobsearch",
     "start_url": ".",
-    "display": "minimal-ui",
+    "display": "browser",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
     "description": "Client for jobsearch project",
-    "orientation": "portrait-primary",
+    "orientation": "landscape",
     "prefer_related_applications": false,
     "icons": [
         {
