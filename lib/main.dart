@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobsearch_client/pages/page_auth.dart';
-import 'package:jobsearch_client/pages/page_home.dart';
+import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -24,7 +23,8 @@ class Client extends StatelessWidget {
             ResponsiveBreakpoint.resize(1200, name: DESKTOP),
             ResponsiveBreakpoint.autoScale(2460, name: "4K"),
           ],
-          background: Container(color: Color(0xFFF5F5F5))),
+        background: Container(color: Color(0xFFF5F5F5)),
+      ),
       initialRoute: Routes.home,
       onGenerateRoute: (RouteSettings settings) {
         return Routes.fadeThrough(settings, (context) {
@@ -42,7 +42,6 @@ class Client extends StatelessWidget {
         });
       },
       theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
