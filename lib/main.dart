@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/routes.dart';
+import 'package:jobsearch_client/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
@@ -32,8 +33,11 @@ class Client extends StatelessWidget {
             case Routes.home:
               return HomePage();
               break;
-            case Routes.auth:
-              return AuthPage();
+            case Routes.signup:
+              return CreateAccount();
+              break;
+            case Routes.login:
+              return Login();
               break;
             default:
               return null;
@@ -41,7 +45,8 @@ class Client extends StatelessWidget {
           }
         });
       },
-      theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
+      theme: ThemeConfig.lightTheme,
+//      theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
     );
   }
 }

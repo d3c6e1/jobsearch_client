@@ -2,16 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jobsearch_client/routes.dart';
-
 import 'components.dart';
 
-/**
- * Menu/Navigation Bar
- *
- * A top menu bar with a text or image logo and
- * navigation links. Navigation links collapse into
- * a hamburger menu on screens smaller than 400px.
- */
 class MenuBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -58,31 +50,11 @@ class MenuBar extends StatelessWidget {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                       ),
-                      FlatButton(
-                        onPressed: () =>
-                            Navigator.pushNamed(context, Routes.auth),
-                        child: Text(
-                          "Auth",
-                          style: buttonTextStyle,
-                        ),
-                        splashColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                      ),
+                      authButton(),
                       FlatButton(
                         onPressed: () {},
                         child: Text(
-                          "ABOUT",
-                          style: buttonTextStyle,
-                        ),
-                        splashColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                      ),
-                      FlatButton(
-                        onPressed: () {},
-                        child: Text(
-                          "CONTACT",
+                          "About",
                           style: buttonTextStyle,
                         ),
                         splashColor: Colors.transparent,
@@ -105,6 +77,26 @@ class MenuBar extends StatelessWidget {
   }
 }
 
+class authButton extends StatelessWidget {
+  const authButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      onPressed: () =>
+          Navigator.pushNamed(context, Routes.signup),
+      child: Text(
+        "Login/Sign Up",
+        style: buttonTextStyle,
+      ),
+      splashColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+    );
+  }
+}
 
 class ListItem extends StatelessWidget {
   // TODO replace with Post item model.
@@ -181,19 +173,6 @@ class ImageWrapper extends StatelessWidget {
       ),
     );
   }
-}
-
-class LittleImageWrapper extends StatelessWidget {
-  final String image;
-  
-  const LittleImageWrapper({Key key, this.image}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-  
 }
 
 class DetailsButton extends StatelessWidget {
