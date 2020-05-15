@@ -1,5 +1,5 @@
 abstract class Services{
-  static String baseURL = "https://simple-node-login.herokuapp.com/";
-  String loginURL = "${baseURL}user/login";
-  String registerURL = "${baseURL}user/signup";
+  static String baseURL = "http://127.0.0.1:8888/";
+  String loginURL = "${baseURL}login";
+  String registerURL = "${baseURL}register";
 }

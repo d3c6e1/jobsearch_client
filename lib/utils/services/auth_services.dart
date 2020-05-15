@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/utils/services/services.dart';
 
 class AuthServices extends Services{
@@ -30,32 +31,29 @@ class AuthServices extends Services{
     }
   }
 
-  Future<String> registerUser(String email, String fName,
-      String lName, String password) async{
-    var res = await post(
+  Future<User> registerUser(String email, String fName,
+      String lName, String password) async {
+    final Response response = await post(
       registerURL,
-      body: {
-        "firstname": fName,
-        "lastname": lName,
-        "email": email,
-        "password": password,
+      headers: <String, String>{
+        'Content-Type' : 'application/json'
       },
-    ).catchError((e){
-      throw(e);
-    });
-
-    print("${res.body}");
-    if(res.statusCode == 200){
-      Map json = jsonDecode(res.body);
-      return "Register succefully";
-    }else{
-      String msg = "";
-      if(res.body.contains("html")){
-        msg = "Server Error";
-      }else{
-        msg = jsonDecode(res.body)['message'];
-      }
-      return msg;
+      body: jsonEncode(<String, String>{
+        "firstName": fName,
+        "lastName": lName,
+        "email": email,
+        "username" : email,
+        "password": password,
+      })
+    );
+    if (response.statusCode == 201) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      return User.fromJson(json.decode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to register user');
     }
   }
 }

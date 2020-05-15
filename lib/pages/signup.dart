@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
-import 'package:jobsearch_client/pages/pages.dart';
+import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/routes.dart';
 import 'package:jobsearch_client/utils/services/auth_services.dart';
 import 'package:jobsearch_client/utils/utils.dart';
@@ -13,6 +13,8 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  Future<User> _futureUser;
+
   bool loading = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -26,7 +28,6 @@ class _CreateAccountState extends State<CreateAccount> {
   FocusNode passFN = FocusNode();
   FocusNode confirmPassFN = FocusNode();
 
-
   submitForm() async{
     FormState form = formKey.currentState;
     form.save();
@@ -38,16 +39,13 @@ class _CreateAccountState extends State<CreateAccount> {
     } else {
       setState(() {
         loading = true;
-      });
-
-      String msg = await AuthServices()
-          .registerUser(email, fName, lName, password).catchError((e){
-        setState(() {
-          loading = false;
+        _futureUser = AuthServices()
+            .registerUser(email, fName, lName, password).catchError((e){
+          setState(() {
+            loading = false;
+          });
         });
       });
-
-      showInSnackBar(msg);
 
       setState(() {
         loading = false;
@@ -94,9 +92,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 fontSize: 25,
               ),
             ),
-
             SizedBox(height: 50,),
-
             Form(
               key: formKey,
               autovalidate: validate,
@@ -114,9 +110,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       fName = val;
                     },
                   ),
-
                   SizedBox(height: 10,),
-
                   InputBox(
                     enabled: !loading,
                     hintText: "Last Name",
@@ -129,9 +123,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       lName = val;
                     },
                   ),
-
                   SizedBox(height: 10,),
-
                   InputBox(
                     enabled: !loading,
                     hintText: "Email",
@@ -144,9 +136,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       email = val;
                     },
                   ),
-
                   SizedBox(height: 10,),
-
                   InputBox(
                     enabled: !loading,
                     hintText: "Password",
@@ -160,9 +150,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       password = val;
                     },
                   ),
-
                   SizedBox(height: 10,),
-
                   InputBox(
                     enabled: !loading,
                     hintText: "Confirm Password",
@@ -178,9 +166,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     },
                     submitAction: submitForm,
                   ),
-
                   SizedBox(height: 20,),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -198,7 +184,6 @@ class _CreateAccountState extends State<CreateAccount> {
                           ),
                         ),
                       ),
-
                       Container(
                         width: 150,
                         height: 50,

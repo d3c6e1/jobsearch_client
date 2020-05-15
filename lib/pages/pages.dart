@@ -1,5 +1,5 @@
 export 'signup.dart';
-export 'page_home.dart';
+export 'home.dart';
 export 'page_cvs.dart';
 export 'page_docs.dart';
 export 'page_organizations.dart';

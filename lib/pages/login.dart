@@ -22,7 +22,6 @@ class _LoginState extends State<Login> {
   FocusNode emailFN = FocusNode();
   FocusNode passFN = FocusNode();
 
-
   submitForm() async{
     FormState form = formKey.currentState;
     form.save();
@@ -42,10 +41,8 @@ class _LoginState extends State<Login> {
           loading = false;
         });
       });
-
       print(msg);
       showInSnackBar(msg);
-
       setState(() {
         loading = false;
       });
@@ -62,7 +59,6 @@ class _LoginState extends State<Login> {
     passFN.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +85,7 @@ class _LoginState extends State<Login> {
                 fontSize: 25,
               ),
             ),
-
             SizedBox(height: 50,),
-
             Form(
               key: formKey,
               autovalidate: validate,
@@ -109,9 +103,7 @@ class _LoginState extends State<Login> {
                       email = val;
                     },
                   ),
-
                   SizedBox(height: 10,),
-
                   InputBox(
                     enabled: !loading,
                     hintText: "Password",
@@ -125,10 +117,7 @@ class _LoginState extends State<Login> {
                     },
                     submitAction: submitForm,
                   ),
-
-
                   SizedBox(height: 20,),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -144,7 +133,6 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-
                       Container(
                         width: 150,
                         height: 50,

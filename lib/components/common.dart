@@ -50,7 +50,7 @@ class MenuBar extends StatelessWidget {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                       ),
-                      authButton(),
+                      LoginButton(),
                       FlatButton(
                         onPressed: () {},
                         child: Text(
@@ -77,8 +77,8 @@ class MenuBar extends StatelessWidget {
   }
 }
 
-class authButton extends StatelessWidget {
-  const authButton({
+class LoginButton extends StatelessWidget {
+  const LoginButton({
     Key key,
   }) : super(key: key);
 
@@ -86,9 +86,9 @@ class authButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () =>
-          Navigator.pushNamed(context, Routes.signup),
+          Navigator.pushNamed(context, Routes.login),
       child: Text(
-        "Login/Sign Up",
+        "Login",
         style: buttonTextStyle,
       ),
       splashColor: Colors.transparent,
