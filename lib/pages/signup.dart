@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
-import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/routes.dart';
-import 'package:jobsearch_client/utils/services/auth_services.dart';
+import 'package:jobsearch_client/utils/services/user_service.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
@@ -13,8 +12,6 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  Future<User> _futureUser;
-
   bool loading = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,14 +36,13 @@ class _CreateAccountState extends State<CreateAccount> {
     } else {
       setState(() {
         loading = true;
-        _futureUser = AuthServices()
-            .registerUser(email, fName, lName, password).catchError((e){
-          setState(() {
-            loading = false;
-          });
-        });
       });
-
+      await UserService()
+          .registerUser(email, fName, lName, password).catchError((e){
+        setState(() {
+          loading = false;
+        });
+      }).whenComplete(() => Navigator.pushNamed(context, Routes.home));
       setState(() {
         loading = false;
       });

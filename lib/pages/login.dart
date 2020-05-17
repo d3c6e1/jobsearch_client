@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/routes.dart';
-import 'package:jobsearch_client/utils/services/auth_services.dart';
+import 'package:jobsearch_client/utils/services/user_service.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
@@ -35,7 +35,7 @@ class _LoginState extends State<Login> {
         loading = true;
       });
 
-      String msg = await AuthServices()
+      String msg = await UserService()
           .loginUser(email, password).catchError((e){
         setState(() {
           loading = false;
