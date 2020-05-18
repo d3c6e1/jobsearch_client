@@ -1,9 +1,12 @@
+import 'package:jobsearch_client/model/model.dart';
+
 class User {
-  final int id;
-  final String email;
-  final String firstName;
-  final String lastName;
-  final String username;
+  int id;
+  String email;
+  String firstName;
+  String lastName;
+  String username;
+  AuthorizationToken token;
 
   User({this.id, this.email, this.firstName, this.lastName, this.username});
 
@@ -17,6 +20,28 @@ class User {
     );
   }
 
-  
+  User.fromMap(Map<String, dynamic> map) {
+    id = map["id"];
+    email = map["email"];
+    firstName = map['firstName'];
+    lastName = map['lastName'];
+    username = map['username'];
+
+    if (map.containsKey("token")) {
+      token = new AuthorizationToken.fromMap(map["token"]);
+    }
+  }
+
+  bool get isAuthenticated => token != null && !token.isExpired;
+
+  Map<String, dynamic> asMap() =>
+    {
+      "id": id,
+      "email": email,
+      "token": token.asMap(),
+      "firstName": firstName,
+      "lastName": lastName,
+      'username': username,
+    };
 
 }

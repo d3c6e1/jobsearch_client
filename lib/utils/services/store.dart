@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
@@ -19,7 +19,8 @@ class Store {
   static Store instance = new Store();
 
   UserService userController;
-  String get clientAuthorization => "Basic ${new Base64Encoder().convert("com.jobsearch.client:abcd".codeUnits)}";
+  static const String _clientID = 'com.jobsearch.client';
+  String get clientAuthorization => "Basic ${const Base64Encoder().convert("$_clientID:".codeUnits)}";
 
   User get authenticatedUser => _authenticatedUser;
   set authenticatedUser(User u) {
@@ -79,7 +80,7 @@ class Store {
   /* Private */
 
   final StorageProvider storageProvider;
-  String _baseURL = "http://localhost:8082";
+  String _baseURL = "http://localhost:8888";
   User _authenticatedUser;
   String get _storedUserKey => "user.json";
 

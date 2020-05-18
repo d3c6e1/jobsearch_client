@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
@@ -22,6 +24,9 @@ class _LoginState extends State<Login> {
   FocusNode emailFN = FocusNode();
   FocusNode passFN = FocusNode();
 
+  String errorMessage = "";
+  StreamSubscription userSubscription;
+
   submitForm() async{
     FormState form = formKey.currentState;
     form.save();
@@ -34,15 +39,8 @@ class _LoginState extends State<Login> {
       setState(() {
         loading = true;
       });
-
-      String msg = await UserService()
-          .loginUser(email, password).catchError((e){
-        setState(() {
-          loading = false;
-        });
-      });
-      print(msg);
-      showInSnackBar(msg);
+      Store.instance.userController.login(email, password)
+        .whenComplete(() => Navigator.pushNamed(context, Routes.home));
       setState(() {
         loading = false;
       });

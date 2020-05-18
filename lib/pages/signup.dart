@@ -1,8 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/routes.dart';
-import 'package:jobsearch_client/utils/services/user_service.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
@@ -17,13 +18,16 @@ class _CreateAccountState extends State<CreateAccount> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   bool validate = false;
-  String email, password,confirmPassword, fName, lName;
+  String email, password, confirmPassword, fName, lName;
 
   FocusNode emailFN = FocusNode();
   FocusNode fNameFN = FocusNode();
   FocusNode lNameFN = FocusNode();
   FocusNode passFN = FocusNode();
   FocusNode confirmPassFN = FocusNode();
+
+  StreamSubscription userSubscription;
+  String errorMessage = "";
 
   submitForm() async{
     FormState form = formKey.currentState;
@@ -37,12 +41,11 @@ class _CreateAccountState extends State<CreateAccount> {
       setState(() {
         loading = true;
       });
-      await UserService()
-          .registerUser(email, fName, lName, password).catchError((e){
+      Store.instance.userController.register(email, password, email, fName, lName).catchError((e) {
         setState(() {
           loading = false;
-        });
-      }).whenComplete(() => Navigator.pushNamed(context, Routes.home));
+        });})
+          .whenComplete(() => Navigator.pushNamed(context, Routes.home));
       setState(() {
         loading = false;
       });
@@ -54,12 +57,28 @@ class _CreateAccountState extends State<CreateAccount> {
   }
 
   @override
+  void initState(){
+    super.initState();
+
+    userSubscription = Store.instance.userController.listen((user) {
+      if (mounted && user != null) {
+        Navigator.pushNamed(context, Routes.home);
+      }
+    }, onError: (Object err) {
+      setState(() {
+        errorMessage = err.toString();
+      });
+    });
+  }
+
+  @override
   void dispose() {
     emailFN.dispose();
     fNameFN.dispose();
     lNameFN.dispose();
     passFN.dispose();
     confirmPassFN.dispose();
+    userSubscription.cancel();
     super.dispose();
   }
 
@@ -168,7 +187,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     children: <Widget>[
                       MouseCursor(
                         child: GestureDetector(
-                          onTap: loading?null:(){
+                          onTap: loading ? null : (){
                             Navigator.pushNamed(context, Routes.login);
                           },
                           child: Text(
