@@ -1,2 +1,8 @@
-export 'page_auth.dart';
-export 'page_home.dart';
+export 'signup.dart';
+export 'home.dart';
+export 'cvs.dart';
+export 'docs.dart';
+export 'organizations.dart';
+export 'profile.dart';
+export 'vacancies.dart';
+export 'login.dart';
