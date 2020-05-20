@@ -1,8 +1,8 @@
 export 'signup.dart';
 export 'home.dart';
-export 'page_cvs.dart';
-export 'page_docs.dart';
-export 'page_organizations.dart';
-export 'page_profile.dart';
-export 'page_vacancies.dart';
+export 'cvs.dart';
+export 'docs.dart';
+export 'organizations.dart';
+export 'profile.dart';
+export 'vacancies.dart';
 export 'login.dart';

@@ -4,7 +4,11 @@ import 'package:jobsearch_client/routes.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-void main() => runApp(Client());
+void main() {
+
+
+  runApp(Client());
+}
 
 class Client extends StatelessWidget {
   @override

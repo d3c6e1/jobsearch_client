@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/routes.dart';
-import 'package:jobsearch_client/utils/services/user_service.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
@@ -40,10 +38,12 @@ class _LoginState extends State<Login> {
         loading = true;
       });
       Store.instance.userController.login(email, password)
+        .catchError((e) {
+          setState(() {
+            loading = false;
+          });
+        })//future user
         .whenComplete(() => Navigator.pushNamed(context, Routes.home));
-      setState(() {
-        loading = false;
-      });
     }
   }
 
@@ -52,10 +52,26 @@ class _LoginState extends State<Login> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    userSubscription = Store.instance.userController.listen((user) {
+      if (mounted && user != null) {
+        Navigator.pop(context);
+      }
+    }, onError: (Object err) {
+      setState(() {
+        errorMessage = err.toString();
+      });
+    });
+  }
+
+  @override
   void dispose() {
     emailFN.dispose();
     passFN.dispose();
     super.dispose();
+    userSubscription.cancel();
   }
 
   @override

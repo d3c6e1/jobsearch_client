@@ -41,11 +41,13 @@ class _CreateAccountState extends State<CreateAccount> {
       setState(() {
         loading = true;
       });
-      Store.instance.userController.register(email, password, email, fName, lName).catchError((e) {
-        setState(() {
-          loading = false;
-        });})
-          .whenComplete(() => Navigator.pushNamed(context, Routes.home));
+      Store.instance.userController.register(email, password, email, fName, lName)
+        .catchError((e) {
+          setState(() {
+            loading = false;
+          });
+        })
+        .whenComplete(() => Navigator.pushNamed(context, Routes.home));
       setState(() {
         loading = false;
       });
@@ -78,8 +80,8 @@ class _CreateAccountState extends State<CreateAccount> {
     lNameFN.dispose();
     passFN.dispose();
     confirmPassFN.dispose();
-    userSubscription.cancel();
     super.dispose();
+    userSubscription.cancel();
   }
 
   @override
