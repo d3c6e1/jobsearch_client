@@ -28,7 +28,7 @@ class User {
     username = map['username'];
 
     if (map.containsKey("token")) {
-      token = new AuthorizationToken.fromMap(map["token"]);
+      token = AuthorizationToken.fromMap(map["token"]);
     }
   }
 
@@ -37,11 +37,10 @@ class User {
   Map<String, dynamic> asMap() =>
     {
       "id": id,
+      'username': username,
       "email": email,
       "token": token.asMap(),
       "firstName": firstName,
       "lastName": lastName,
-      'username': username,
     };
-
 }

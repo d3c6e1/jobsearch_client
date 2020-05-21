@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
@@ -42,12 +41,12 @@ class _CreateAccountState extends State<CreateAccount> {
         loading = true;
       });
       Store.instance.userController.register(email, password, email, fName, lName)
-        .catchError((e) {
+        .catchError((e){
           setState(() {
             loading = false;
           });
-        })
-        .whenComplete(() => Navigator.pushNamed(context, Routes.home));
+        });
+
       setState(() {
         loading = false;
       });

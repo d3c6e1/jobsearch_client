@@ -16,7 +16,7 @@ class Routes {
   static const String organization = '/organization';
 
   static Route<T> fadeThrough<T>(RouteSettings settings, WidgetBuilder page,
-      {int duration = 300}) {
+      {int duration = 200}) {
     return PageRouteBuilder<T>(
       settings: settings,
       transitionDuration: Duration(milliseconds: duration),

@@ -26,7 +26,7 @@ class UserService extends ServiceController<User> {
     }
 
     switch (response.statusCode) {
-      case 200: return getAuthenticatedUser(token: new AuthorizationToken.fromMap(response.body));
+      case 200: return getAuthenticatedUser(token: AuthorizationToken.fromMap(response.body));
       default: addError(new APIError(response.body["error"]));
     }
 
@@ -50,7 +50,7 @@ class UserService extends ServiceController<User> {
     }
 
     switch (response.statusCode) {
-      case 200: return getAuthenticatedUser(token: new AuthorizationToken.fromMap(response.body));
+      case 200: return getAuthenticatedUser(token: AuthorizationToken.fromMap(response.body));
       case 409: addError(new APIError("User already exists")); break;
       default: addError(new APIError(response.body["error"]));
     }

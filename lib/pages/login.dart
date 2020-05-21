@@ -38,12 +38,11 @@ class _LoginState extends State<Login> {
         loading = true;
       });
       Store.instance.userController.login(email, password)
-        .catchError((e) {
+        .catchError((e){
           setState(() {
             loading = false;
           });
-        })//future user
-        .whenComplete(() => Navigator.pushNamed(context, Routes.home));
+        });
     }
   }
 
@@ -57,7 +56,7 @@ class _LoginState extends State<Login> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pop(context);
+        Navigator.pushNamed(context, Routes.home);
       }
     }, onError: (Object err) {
       setState(() {
