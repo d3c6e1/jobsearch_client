@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
-import 'package:jobsearch_client/routes.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 

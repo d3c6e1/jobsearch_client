@@ -1,29 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobsearch_client/routes.dart';
+import 'package:jobsearch_client/utils/utils.dart';
 import 'components.dart';
-
-class LoginButton extends StatelessWidget {
-  const LoginButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-      onPressed: () =>
-          Navigator.pushNamed(context, Routes.login),
-      child: Text(
-        "Login",
-        style: buttonTextStyle,
-      ),
-      splashColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-    );
-  }
-}
 
 class ListItem extends StatelessWidget {
   // TODO replace with Post item model.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearch_client/pages/pages.dart';
-import 'package:jobsearch_client/routes.dart';
+import 'package:jobsearch_client/utils/utils.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {

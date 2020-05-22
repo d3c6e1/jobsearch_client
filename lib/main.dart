@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jobsearch_client/routes.dart';
+import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'model/model.dart';
 
 void main() {
-
 
   runApp(AppClient());
 }

@@ -21,4 +21,4 @@ TextStyle bodyTextStyle = GoogleFonts.openSans(
     textStyle: TextStyle(fontSize: 14, color: textPrimary));
 
 TextStyle buttonTextStyle = GoogleFonts.montserrat(
-    textStyle: TextStyle(fontSize: 14, color: textPrimary, letterSpacing: 1));
+    textStyle: TextStyle(fontSize: 14, color: textPrimary, letterSpacing: 1,));
