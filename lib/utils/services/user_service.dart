@@ -13,11 +13,11 @@ class UserService extends ServiceController<User> {
   }
 
   Future<User> login(String username, String password) async {
-    var req = new Request.post("/auth/token", {
+    var req = Request.post("/auth/token", {
       "username": username,
       "password": password,
       "grant_type": "password"
-    }, contentType: new ContentType("application", "x-www-form-urlencoded"));
+    }, contentType: ContentType("application", "x-www-form-urlencoded"));
 
     var response = await store.executeClientRequest(req);
     if (response.error != null) {
@@ -27,9 +27,8 @@ class UserService extends ServiceController<User> {
 
     switch (response.statusCode) {
       case 200: return getAuthenticatedUser(token: AuthorizationToken.fromMap(response.body));
-      default: addError(new APIError(response.body["error"]));
+      default: addError(APIError(response.body["error"]));
     }
-
     return null;
   }
 
@@ -51,10 +50,9 @@ class UserService extends ServiceController<User> {
 
     switch (response.statusCode) {
       case 200: return getAuthenticatedUser(token: AuthorizationToken.fromMap(response.body));
-      case 409: addError(new APIError("User already exists")); break;
-      default: addError(new APIError(response.body["error"]));
+      case 409: addError(APIError("User already exists")); break;
+      default: addError(APIError(response.body["error"]));
     }
-
     return null;
   }
 
@@ -72,13 +70,31 @@ class UserService extends ServiceController<User> {
         var user = new User.fromMap(response.body)
           ..token = token;
         add(user);
-
         return user;
       } break;
-
       default: addError(new APIError(response.body["error"]));
     }
+    return null;
+  }
 
+  Future<User> getAuthenticatedUserEx({AuthorizationToken token}) async {
+    var req = new Request.get("/profile/mnbvcx");
+    var response = await store.executeUserRequest(req, token: token);
+
+    if (response.error != null) {
+      addError(response.error);
+      return null;
+    }
+
+    switch (response.statusCode) {
+      case 200: {
+        var user = new User.fromMap(response.body)
+          ..token = token;
+        add(user);
+        return user;
+      } break;
+      default: addError(new APIError(response.body["error"]));
+    }
     return null;
   }
 }

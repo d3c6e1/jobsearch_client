@@ -10,13 +10,7 @@ class HomePage extends StatelessWidget{
     return MainScaffold(
       widgets: <Widget>[
         MenuBar(),
-        ListItem(
-          imageUrl: null,
-          title: context.watch<User>() != null ? context.watch<User>().asMap().toString()
-          : 'context.watch<Client>().currentUser',
-          description: "listItemPreviewText",
-          dest: Routes.vacancy,
-        ),
+        SizedBox.shrink(),
       ],
     );
   }

@@ -30,6 +30,8 @@ class MenuBar extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Wrap(
                     children: <Widget>[
+                      FindVacanciesButton(),
+                      PostCVButton(),
                       context.watch<User>() != null ? ProfileButton()
                           : LoginButton(),
 //                      FlatButton(
@@ -77,6 +79,35 @@ class MenuBar extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 30),
             color: Color(0xFFEEEEEE)),
       ],
+    );
+  }
+}
+
+class FindVacanciesButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BaseMenuButton(
+      onPressed: () => Navigator.pushNamed(context, Routes.vacancies),
+      child: Text(
+        'Find vacancies',
+        style: buttonTextStyle,
+      ),
+    );
+  }
+}
+
+class PostCVButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BaseMenuButton(
+      onPressed: () => Navigator.pushNamed(context,
+          context.read<User>() != null ? Routes.createCV
+              : Routes.signup
+      ),
+      child: Text(
+        'Post resume',
+        style: buttonTextStyle,
+      ),
     );
   }
 }

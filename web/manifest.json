@@ -1,12 +1,12 @@
 {
-    "name": "jobsearch_client",
+    "name": "Search for job",
     "short_name": "Jobsearch",
     "start_url": ".",
-    "display": "browser",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
+    "display": "standalone",
+    "background_color": "#F5F5F5",
+    "theme_color": "#8562AD",
     "description": "Search for jobs",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "prefer_related_applications": false,
     "icons": [
         {
