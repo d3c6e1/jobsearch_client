@@ -1,6 +1,5 @@
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'components.dart';
 
 TextStyle headlineTextStyle = GoogleFonts.montserrat(
@@ -21,4 +20,4 @@ TextStyle bodyTextStyle = GoogleFonts.openSans(
     textStyle: TextStyle(fontSize: 14, color: textPrimary));
 
 TextStyle buttonTextStyle = GoogleFonts.montserrat(
-    textStyle: TextStyle(fontSize: 14, color: textPrimary, letterSpacing: 1));
+    textStyle: TextStyle(fontSize: 14, color: textPrimary, letterSpacing: 1,));

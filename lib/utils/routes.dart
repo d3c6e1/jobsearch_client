@@ -6,7 +6,7 @@ class Routes {
   static const String profile = '/profile';
   static const String login = '/login';
   static const String signup = '/signup';
-  static const String cvs = '/cvs';
+  static const String createCV = '/create_resume';
   static const String vacancies = '/vacancies';
   static const String docs = '/docs';
   static const String organizations = '/organizations';
@@ -16,7 +16,7 @@ class Routes {
   static const String organization = '/organization';
 
   static Route<T> fadeThrough<T>(RouteSettings settings, WidgetBuilder page,
-      {int duration = 300}) {
+      {int duration = 200}) {
     return PageRouteBuilder<T>(
       settings: settings,
       transitionDuration: Duration(milliseconds: duration),

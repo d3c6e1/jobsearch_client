@@ -2,16 +2,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
-import 'package:jobsearch_client/routes.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
-class Login extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
   bool loading = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -38,12 +37,11 @@ class _LoginState extends State<Login> {
         loading = true;
       });
       Store.instance.userController.login(email, password)
-        .catchError((e) {
+        .catchError((e){
           setState(() {
             loading = false;
           });
-        })//future user
-        .whenComplete(() => Navigator.pushNamed(context, Routes.home));
+        });
     }
   }
 
@@ -57,7 +55,7 @@ class _LoginState extends State<Login> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pop(context);
+        Navigator.pushNamed(context, Routes.home);
       }
     }, onError: (Object err) {
       setState(() {
