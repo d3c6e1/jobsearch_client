@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-class SearchBar extends StatefulWidget{
+class VacancySearch extends StatefulWidget{
+  final String headText;
+
+  const VacancySearch({Key key, this.headText}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => _SearchBarState();
+  State<StatefulWidget> createState() => _VacancySearchState();
 }
 
-class _SearchBarState extends State<SearchBar>{
+class _VacancySearchState extends State<VacancySearch>{
+
   String request, city;
 
   FocusNode requestFN = FocusNode();
@@ -61,7 +66,7 @@ class _SearchBarState extends State<SearchBar>{
               child: Container(
                 margin: EdgeInsets.all(10.0),
                 child: Text(
-                  'Try to find vacancies right now',
+                  widget.headText ?? 'Vacancy search',
                   style: headlineTextStyle,
                 ),
               ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jobsearch_client/components/components.dart';
 
 class ThemeConfig{
   //Colors for theme
   static Color lightPrimary = Colors.white;
-  static Color lightAccent = Color(0xFF8562AD);
+  static Color lightAccent = textThemeAccent;
   static Color lightBG = Colors.white;
 
   static ThemeData lightTheme = ThemeData(

@@ -7,6 +7,7 @@ class Routes {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String createCV = '/create_resume';
+  static const String account = '/account';
   static const String vacancies = '/vacancies';
   static const String docs = '/docs';
   static const String organizations = '/organizations';

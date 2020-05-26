@@ -21,3 +21,23 @@ TextStyle bodyTextStyle = GoogleFonts.openSans(
 
 TextStyle buttonTextStyle = GoogleFonts.montserrat(
     textStyle: TextStyle(fontSize: 14, color: textPrimary, letterSpacing: 1,));
+
+TextStyle headlineThemeTextStyle = GoogleFonts.montserrat(
+    textStyle: TextStyle(
+        fontSize: 26,
+        color: textThemeAccent,
+        letterSpacing: 1.5,
+        fontWeight: FontWeight.w300));
+
+TextStyle headlineSecondaryThemeTextStyle = GoogleFonts.montserrat(
+    textStyle: TextStyle(
+        fontSize: 20, color: textThemeAccent, fontWeight: FontWeight.w300));
+
+TextStyle subtitleThemeTextStyle = GoogleFonts.openSans(
+    textStyle: TextStyle(fontSize: 14, color: textThemeAccent, letterSpacing: 1));
+
+TextStyle bodyThemeTextStyle = GoogleFonts.openSans(
+    textStyle: TextStyle(fontSize: 14, color: textThemeAccent));
+
+TextStyle buttonThemeTextStyle = GoogleFonts.montserrat(
+    textStyle: TextStyle(fontSize: 14, color: textThemeAccent, letterSpacing: 1,));

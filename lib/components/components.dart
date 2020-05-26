@@ -8,3 +8,6 @@ export 'menu.dart';
 export 'buttons.dart';
 export 'divider.dart';
 export 'resume_section.dart';
+export 'footer.dart';
+export 'text.dart';
+export 'info_section.dart';
