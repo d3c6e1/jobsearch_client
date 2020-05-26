@@ -10,10 +10,13 @@ class Router {
           return HomePage();
           break;
         case Routes.signup:
-          return CreateAccount();
+          return SignUpPage();
           break;
         case Routes.login:
-          return Login();
+          return LoginPage();
+          break;
+        case Routes.profile:
+          return ProfilePage();
           break;
         default:
           return null;

@@ -6,7 +6,7 @@
     "background_color": "#F5F5F5",
     "theme_color": "#8562AD",
     "description": "Search for jobs",
-    "orientation": "portrait",
+    "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {

@@ -5,12 +5,12 @@ import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
-class Login extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
   bool loading = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

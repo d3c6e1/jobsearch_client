@@ -34,39 +34,6 @@ class MenuBar extends StatelessWidget {
                       PostCVButton(),
                       context.watch<User>() != null ? ProfileButton()
                           : LoginButton(),
-//                      FlatButton(
-//                        onPressed: () => Navigator.popUntil(context,
-//                            ModalRoute.withName(Navigator.defaultRouteName)),
-//                        child: Text(
-//                          "Home",
-//                          style: buttonTextStyle,
-//                        ),
-//                        splashColor: Colors.transparent,
-//                        hoverColor: Colors.transparent,
-//                        highlightColor: Colors.transparent,
-//                      ),
-//                      FlatButton(
-//                        onPressed: () => Navigator.pushNamed(context, Routes.profile),
-//                        child: Text(
-//                          context.watch<User>() != null ? '${context.watch<User>().firstName} ${context.watch<User>().lastName}'
-//                          : 'context.watch<Client>().currentUser',
-//                          style: buttonTextStyle,
-//                        ),
-//                        splashColor: Colors.black26,
-//                        hoverColor: Colors.black12,
-//                        highlightColor: Colors.transparent,
-//                      ),
-
-//                      FlatButton(
-//                        onPressed: () {},
-//                        child: Text(
-//                          "About",
-//                          style: buttonTextStyle,
-//                        ),
-//                        splashColor: Colors.transparent,
-//                        hoverColor: Colors.transparent,
-//                        highlightColor: Colors.transparent,
-//                      ),
                     ],
                   ),
                 ),
@@ -74,10 +41,7 @@ class MenuBar extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-            height: 1,
-            margin: EdgeInsets.only(bottom: 30),
-            color: Color(0xFFEEEEEE)),
+        DividerLine(),
       ],
     );
   }
@@ -165,4 +129,3 @@ class BaseMenuButton extends StatelessWidget {
     );
   }
 }
-

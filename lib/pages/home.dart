@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearch_client/components/components.dart';
-import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
-import 'package:provider/provider.dart';
+import 'package:jobsearch_client/components/search_bar.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -10,7 +8,11 @@ class HomePage extends StatelessWidget{
     return MainScaffold(
       widgets: <Widget>[
         MenuBar(),
-        SizedBox.shrink(),
+        SearchBar(),
+        DividerLine(),
+        ResumeSection(),
+        DividerLine(),
+
       ],
     );
   }
