@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class DividerLine extends StatelessWidget{
   final Color color;
@@ -14,3 +14,5 @@ class DividerLine extends StatelessWidget{
     );
   }
 }
+
+const Widget divider = Divider(color: Color(0xFFEEEEEE), thickness: 1.0);

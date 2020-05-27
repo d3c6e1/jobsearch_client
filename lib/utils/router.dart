@@ -18,6 +18,9 @@ class Router {
         case Routes.profile:
           return ProfilePage();
           break;
+        case Routes.account:
+          return AccountPage();
+          break;
         default:
           return null;
           break;

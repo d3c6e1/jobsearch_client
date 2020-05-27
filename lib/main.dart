@@ -31,7 +31,7 @@ class AppClient extends StatelessWidget {
             ],
           background: Container(color: Color(0xFFF5F5F5)),
         ),
-        initialRoute: Routes.home,
+        initialRoute: Routes.account,
         onGenerateRoute: Router.generateRoute,
         theme: ThemeConfig.lightTheme,
 //      theme: Theme.of(context).copyWith(platform: TargetPlatform.android),

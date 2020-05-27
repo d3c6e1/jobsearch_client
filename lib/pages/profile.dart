@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
+import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget{
   @override
@@ -14,8 +16,13 @@ class _ProfilePageState extends State<ProfilePage>{
     return MainScaffold(
       widgets: [
         MenuBar(),
+        SizedBox(
+          height: 20,
+        ),
+        _ProfileHeader(),
+        divider,
         Profile(),
-        DividerLine(),
+        divider,
         Footer(),
       ],
     );
@@ -62,7 +69,6 @@ class _ProfileState extends State<Profile>{
 
   ResponsiveGridCol _profileItem(BuildContext context,
       {String img, String itemName, Function onTap}) {
-
     return ResponsiveGridCol(
           xs: 12,
           sm: 6,
@@ -72,7 +78,7 @@ class _ProfileState extends State<Profile>{
             decoration: BoxDecoration(
               border: Border.all(
                 color: textSecondary,
-                width: 0.1,
+                width: 1.0,
               )
             ),
             child: MouseCursor(
@@ -99,5 +105,29 @@ class _ProfileState extends State<Profile>{
             ),
           ),
         );
+  }
+}
+
+class _ProfileHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      alignment: Alignment.topLeft,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Welcome, ${context.select((User u) => u.firstName)}!',
+            style: headlineTextStyle,
+          ),
+          // TODO
+          Text(
+            'Profile section with some options',
+            style: subtitleTextStyle,
+          ),
+        ],
+      ),
+    );
   }
 }

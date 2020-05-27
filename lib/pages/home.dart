@@ -11,11 +11,11 @@ class HomePage extends StatelessWidget{
         VacancySearch(
           headText: 'Try to find vacancies right now',
         ),
-        DividerLine(),
+        divider,
         ResumeSection(),
-        DividerLine(),
+        divider,
         InfoSection(),
-        DividerLine(),
+        divider,
         Footer(),
       ],
     );

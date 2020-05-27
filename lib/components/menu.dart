@@ -41,9 +41,7 @@ class MenuBar extends StatelessWidget {
             ],
           ),
         ),
-        DividerLine(
-          color: Color(0xFF000000),
-        ),
+        Divider(color: Color(0xFF000000), thickness: 1),
       ],
     );
   }
