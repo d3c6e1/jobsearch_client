@@ -58,8 +58,8 @@ class _ProfileState extends State<Profile>{
             img: 'img',
             itemName: 'Log out',
             onTap: () {
-              Store.instance.userController.logout();
-              Navigator.pushNamed(context, Routes.home);
+              // whenComplete prevents null User crash after logout
+              Navigator.pushNamed(context, Routes.home).whenComplete(() => Store.instance.userController.logout());
             },
           ),
         ],
@@ -109,8 +109,10 @@ class _ProfileState extends State<Profile>{
 }
 
 class _ProfileHeader extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    final String fName = context.select((User u) => u.firstName);
     return Container(
       margin: EdgeInsets.all(10.0),
       alignment: Alignment.topLeft,
@@ -118,7 +120,7 @@ class _ProfileHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Welcome, ${context.select((User u) => u.firstName)}!',
+            'Welcome, $fName!',
             style: headlineTextStyle,
           ),
           // TODO

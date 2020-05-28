@@ -108,17 +108,48 @@ Widget personalData(BuildContext context){
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-            child: Row(
+            child: Table(
               children: [
-                Container(
-                  child: Text(
-                    'fgdsrefs'
-                  ),
+                TableRow(
+                  children: [
+                    paragraphCell(
+                      text: 'Full name',
+                    ),
+                    dataCell(
+                      text: '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}',
+                    ),
+                  ],
                 ),
-                Container(
-                  child: Text(
-                      '654873o39237'
-                  ),
+                // TODO complete model
+                TableRow(
+                  children: [
+                    paragraphCell(
+                      text: 'Birth date',
+                    ),
+                    dataCell(
+                      text: '11.11.1111',
+                    )
+                  ],
+                ),
+                TableRow(
+                  children: [
+                    paragraphCell(
+                      text: 'City',
+                    ),
+                    dataCell(
+                      text: 'SimpleCity',
+                    )
+                  ],
+                ),
+                TableRow(
+                  children: [
+                    paragraphCell(
+                      text: 'Phone',
+                    ),
+                    dataCell(
+                      text: '0998765432',
+                    )
+                  ],
                 ),
               ],
             ),
@@ -135,6 +166,50 @@ Widget personalData(BuildContext context){
       ),
     ),
   );
+}
+
+class dataCell extends StatelessWidget {
+  const dataCell({
+    Key key, @required this.text,
+  }) : super(key: key);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return TableCell(
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 7.0),
+        child: Text(
+          text,
+          style: bodyTextStyle,
+        ),
+      ),
+    );
+  }
+}
+
+class paragraphCell extends StatelessWidget {
+  const paragraphCell({
+    Key key, @required this.text
+  }) : super(key: key);
+
+  final String text;
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return TableCell(
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 7.0),
+        child: Text(
+          text,
+          style: subtitleTextStyle,
+        ),
+      ),
+    );
+  }
 }
 
 Widget photo(BuildContext context){
@@ -203,9 +278,7 @@ Widget email(BuildContext context){
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
             child: Text(
-              // TODO change to valid
-              'rkjsdfhsdlkhfsdl',
-//              '${context.select((User u) => u.email)}',
+              '${context.select((User u) => u.email)}',
               style: subtitleTextStyle,
             ),
           ),

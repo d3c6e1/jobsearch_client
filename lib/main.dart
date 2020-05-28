@@ -4,10 +4,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-void main() {
-
-  runApp(AppClient());
-}
+void main() => runApp(AppClient());
 
 class AppClient extends StatelessWidget {
   @override
@@ -31,7 +28,7 @@ class AppClient extends StatelessWidget {
             ],
           background: Container(color: Color(0xFFF5F5F5)),
         ),
-        initialRoute: Routes.account,
+        initialRoute: Routes.home,
         onGenerateRoute: Router.generateRoute,
         theme: ThemeConfig.lightTheme,
 //      theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
