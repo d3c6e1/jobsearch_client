@@ -7,11 +7,11 @@ class User {
   String lastName;
   String username;
   AuthorizationToken token;
-  String phoneNumber;
-  String city;
-  Map<String, dynamic> socialNetworks = Map<String, dynamic>();
-  DateTime birthDate;
-  List<CV> cvs = List<CV>();
+//  String phoneNumber;
+//  String city;
+//  Map<String, dynamic> socialNetworks = Map<String, dynamic>();
+//  DateTime birthDate;
+//  List<CV> cvs = List<CV>();
 
 
   User({this.id, this.email, this.firstName, this.lastName, this.username});
@@ -22,7 +22,7 @@ class User {
     firstName = map['firstName'];
     lastName = map['lastName'];
     username = map['username'];
-    cvs = map['cvs'];
+//    cvs = map['cvs'];
 
     if (map.containsKey("token")) {
       token = AuthorizationToken.fromMap(map["token"]);
@@ -39,6 +39,6 @@ class User {
       'token': token.asMap(),
       'firstName': firstName,
       'lastName': lastName,
-      'cvs': cvs,
+//      'cvs': cvs,
     };
 }

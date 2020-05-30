@@ -30,9 +30,9 @@ class _MyResumesPageState extends State<MyResumesPage>{
 class _MyResumes extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return context.watch<User>() != null && context.select((User u) => u.cvs.isNotEmpty) ?
-        _ResumesList() :
-        CreateResumeSection();
+//    return context.watch<User>() != null && context.select((User u) => u.cvs.isNotEmpty) ?
+//        _ResumesList() :
+//        CreateResumeSection();
   }
 }
 

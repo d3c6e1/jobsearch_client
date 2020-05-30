@@ -100,7 +100,7 @@ class ProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String text = context.read()<User>() != null ?
+    final String text = context.watch<User>() != null ?
         '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}' :
         'Login';
     return BaseMenuButton(

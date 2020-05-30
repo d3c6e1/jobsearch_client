@@ -54,8 +54,6 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
 
     userSubscription = Store.instance.userController.listen((user) {
-      print(mounted);
-      print(user.asMap());
       if (mounted && user != null) {
         Navigator.pushNamed(context, Routes.home);
       }
