@@ -45,7 +45,7 @@ class _ProfileState extends State<Profile>{
             context,
             img: 'img',
             itemName: 'My resumes',
-            onTap: () => Navigator.pushNamed(context, Routes.cv),
+            onTap: () => Navigator.pushNamed(context, Routes.my_resumes),
           ),
           _profileItem(
             context,
@@ -112,7 +112,7 @@ class _ProfileState extends State<Profile>{
 class _ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final String fName = context.read<User>() != null ?
+    final String fName = context.watch<User>() != null ?
         context.select((User user) => user.firstName) :
         '';
     return BasePageHeader(
