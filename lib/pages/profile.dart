@@ -45,7 +45,7 @@ class _ProfileState extends State<Profile>{
             context,
             img: 'img',
             itemName: 'My resumes',
-            onTap: () => Navigator.pushNamed(context, Routes.cv),
+            onTap: () => Navigator.pushNamed(context, Routes.my_resumes),
           ),
           _profileItem(
             context,
@@ -58,8 +58,9 @@ class _ProfileState extends State<Profile>{
             img: 'img',
             itemName: 'Log out',
             onTap: () {
-              // whenComplete prevents null User crash after logout
-              Navigator.pushNamed(context, Routes.home).whenComplete(() => Store.instance.userController.logout());
+              // TODO fix logout
+              Store.instance.userController.logout();
+              Navigator.pushNamed(context, Routes.home);
             },
           ),
         ],
@@ -109,27 +110,14 @@ class _ProfileState extends State<Profile>{
 }
 
 class _ProfileHeader extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final String fName = context.select((User u) => u.firstName);
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      alignment: Alignment.topLeft,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Welcome, $fName!',
-            style: headlineTextStyle,
-          ),
-          // TODO
-          Text(
-            'Profile section with some options',
-            style: subtitleTextStyle,
-          ),
-        ],
-      ),
+    final String fName = context.watch<User>() != null ?
+        context.select((User user) => user.firstName) :
+        '';
+    return BasePageHeader(
+      title: 'Welcome, $fName!',
+      subtitle: 'Profile section with some options',
     );
   }
 }

@@ -87,7 +87,10 @@ class _SignUpPageState extends State<SignUpPage> {
     return MainScaffold(
       widgets: <Widget>[
         MenuBar(),
+        SizedBox(height: 20.0,),
         _buildForm(),
+        divider,
+        Footer(),
       ],
     );
   }
