@@ -2,30 +2,39 @@ import 'package:jobsearch_client/model/model.dart';
 
 class User {
   int id;
-  String email;
   String firstName;
   String lastName;
+  String additionalName;
+  String email;
+  String phoneNumber;
+  String city;
+  Map<String, dynamic> socialNetworks;
+  DateTime birthDate;
   String username;
+  List<CV> cvs;
+  List<DocumentFile> documents;
+  Organization organization;
   AuthorizationToken token;
-//  String phoneNumber;
-//  String city;
-//  Map<String, dynamic> socialNetworks = Map<String, dynamic>();
-//  DateTime birthDate;
-//  List<CV> cvs = List<CV>();
 
-
-  User({this.id, this.email, this.firstName, this.lastName, this.username});
+  User({this.id, this.email, this.firstName, this.lastName, this.username,
+    this.phoneNumber, this.birthDate, this.city, this.additionalName,
+    this.socialNetworks, this.cvs, this.organization, this.documents});
 
   User.fromMap(Map<String, dynamic> map) {
-    id = map["id"];
-    email = map["email"];
+    id = map['id'];
+    email = map['email'];
     firstName = map['firstName'];
     lastName = map['lastName'];
     username = map['username'];
-//    cvs = map['cvs'];
+    additionalName = map['additionalName'];
+    phoneNumber = map['phoneNumber'];
+    city = map['city'];
+    birthDate = map['birthDate'];
 
-    if (map.containsKey("token")) {
-      token = AuthorizationToken.fromMap(map["token"]);
+
+
+    if (map.containsKey('token')) {
+      token = AuthorizationToken.fromMap(map['token']);
     }
   }
 
@@ -39,6 +48,13 @@ class User {
       'token': token.asMap(),
       'firstName': firstName,
       'lastName': lastName,
-//      'cvs': cvs,
+      'additionalName': additionalName,
+      'cvs': cvs,
+      'phoneNumber': phoneNumber,
+      'city': city,
+      'socialNetworks': socialNetworks,
+      'birthDate': birthDate,
+      'documents': documents,
+      'organization': organization,
     };
 }
