@@ -32,8 +32,8 @@ class MenuBar extends StatelessWidget {
                     children: <Widget>[
                       FindVacanciesButton(),
                       PostCVButton(),
-                      context.select((User u) => u) == null ? LoginButton()
-                          : ProfileButton(),
+                      context.watch<User>() != null ? ProfileButton()
+                          : LoginButton(),
                     ],
                   ),
                 ),
@@ -100,12 +100,13 @@ class ProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String fName = context.select((User u) => u.firstName);
-    final String lName = context.select((User u) => u.lastName);
+    final String text = context.read()<User>() != null ?
+        '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}' :
+        'Login';
     return BaseMenuButton(
       onPressed: () => Navigator.pushNamed(context, Routes.profile),
       child: Text(
-        '$fName $lName',
+        text,
         style: buttonTextStyle,
       ),
     );

@@ -7,18 +7,14 @@ class User {
   String lastName;
   String username;
   AuthorizationToken token;
+  String phoneNumber;
+  String city;
+  Map<String, dynamic> socialNetworks = Map<String, dynamic>();
+  DateTime birthDate;
+  List<CV> cvs = List<CV>();
+
 
   User({this.id, this.email, this.firstName, this.lastName, this.username});
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id'],
-      email: json['email'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      username: json['username'],
-    );
-  }
 
   User.fromMap(Map<String, dynamic> map) {
     id = map["id"];
@@ -26,6 +22,7 @@ class User {
     firstName = map['firstName'];
     lastName = map['lastName'];
     username = map['username'];
+    cvs = map['cvs'];
 
     if (map.containsKey("token")) {
       token = AuthorizationToken.fromMap(map["token"]);
@@ -36,11 +33,12 @@ class User {
 
   Map<String, dynamic> asMap() =>
     {
-      "id": id,
+      'id': id,
       'username': username,
-      "email": email,
-      "token": token.asMap(),
-      "firstName": firstName,
-      "lastName": lastName,
+      'email': email,
+      'token': token.asMap(),
+      'firstName': firstName,
+      'lastName': lastName,
+      'cvs': cvs,
     };
 }

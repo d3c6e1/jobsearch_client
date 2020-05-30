@@ -11,3 +11,4 @@ export 'resume_section.dart';
 export 'footer.dart';
 export 'text.dart';
 export 'info_section.dart';
+export 'base_page_header.dart';

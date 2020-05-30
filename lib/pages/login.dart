@@ -77,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
     return MainScaffold(
       widgets: <Widget>[
         MenuBar(),
+        SizedBox(height: 20.0,),
         _buildForm(),
+        divider,
+        Footer(),
       ],
     );
   }
@@ -158,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             color: Theme.of(context).accentColor,
-                            onPressed: ()=>submitForm(),
+                            onPressed: ()=> submitForm(),
                             child: Text(
                               "Login",
                               style: TextStyle(

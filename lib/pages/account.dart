@@ -22,7 +22,7 @@ class _AccountPageState extends State<AccountPage> {
         ),
         _AccountHeader(),
         divider,
-        Account(),
+        _Account(),
         divider,
         Footer(),
       ],
@@ -30,12 +30,12 @@ class _AccountPageState extends State<AccountPage> {
   }
 }
 
-class Account extends StatefulWidget{
+class _Account extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _AccountState();
 }
 
-class _AccountState extends State<Account> {
+class _AccountState extends State<_Account> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -331,22 +331,9 @@ Widget pass(){
 class _AccountHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      alignment: Alignment.topLeft,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Personal data',
-            style: headlineThemeTextStyle,
-          ),
-          Text(
-            'Your email, name, phone number etc',
-            style: subtitleTextStyle,
-          ),
-        ],
-      ),
+    return BasePageHeader(
+      title: 'Personal data',
+      subtitle: 'Your email, name, phone number etc',
     );
   }
 }

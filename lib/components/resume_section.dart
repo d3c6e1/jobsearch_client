@@ -16,7 +16,7 @@ class _ResumeSectionState extends State<ResumeSection>{
     return Container(
       margin: EdgeInsets.all(10.0),
       child: context.watch<User>() != null ? _LoginedSection()
-          : _Section(),
+          : CreateResumeSection(),
     );
   }
 }
@@ -54,7 +54,7 @@ class _LoginedSection extends StatelessWidget{
   }
 }
 
-class _Section extends StatelessWidget{
+class CreateResumeSection extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -88,7 +88,11 @@ class _Section extends StatelessWidget{
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: BaseButton(
-                  onPressed: () => Navigator.pushNamed(context, Routes.signup),
+                  onPressed: () {
+                    return context.read<User>() != null ?
+                        Navigator.pushNamed(context, Routes.createCV) :
+                        Navigator.pushNamed(context, Routes.signup);
+                  },
                   buttonText: 'Create resume',
                 ),
               ),
