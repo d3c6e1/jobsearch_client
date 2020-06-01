@@ -31,7 +31,23 @@ class User {
     city = map['city'];
     birthDate = map['birthDate'];
 
+    if (map['cvs'] != null) {
+      cvs = List<CV>();
+      map['cvs'].forEach((cv) {
+        cvs.add(CV.fromMap(cv));
+      });
+    }
 
+    if (map['documents'] != null) {
+      documents = List<DocumentFile>();
+      map['documents'].forEach((docFile) {
+        documents.add(DocumentFile.fromMap(docFile));
+      });
+    }
+
+    organization = map['organization'] != null
+        ? Organization.fromMap(map['organization'])
+        : null;
 
     if (map.containsKey('token')) {
       token = AuthorizationToken.fromMap(map['token']);
@@ -49,12 +65,16 @@ class User {
       'firstName': firstName,
       'lastName': lastName,
       'additionalName': additionalName,
-      'cvs': cvs,
       'phoneNumber': phoneNumber,
       'city': city,
       'socialNetworks': socialNetworks,
       'birthDate': birthDate,
-      'documents': documents,
-      'organization': organization,
+      'organization': organization.asMap(),
+      'cvs': cvs != null ?
+          cvs.map((cv) => cv.asMap()).toList() :
+          null,
+      'documents': documents != null ?
+          documents.map((docFile) => docFile.asMap()).toList() :
+          null,
     };
 }

@@ -1,10 +1,8 @@
-import 'package:jobsearch_client/model/model.dart';
-
 class CV{
   int id;
   String name;
   DateTime publishDate;
-  User owner;
+  int owner;
   Map<String, dynamic> data;
 
   CV({this.id, this.name, this.publishDate, this.owner, this.data});
@@ -16,4 +14,14 @@ class CV{
     owner = map['owner']['id'];
     data = Map.from(map['data']);
   }
+
+  Map<String, dynamic> asMap() =>{
+    'id': id,
+    'name': name,
+    'publishDate': publishDate.toIso8601String(),
+    'owner':{
+      'id': owner,
+    },
+    'data': data,
+  };
 }
