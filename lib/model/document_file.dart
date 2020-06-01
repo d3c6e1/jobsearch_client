@@ -1,3 +1,5 @@
+import 'package:enum_to_string/enum_to_string.dart';
+
 enum _DocumentFileType {
   passport, other
 }
@@ -12,7 +14,8 @@ class DocumentFile {
 
   DocumentFile.fromMap(Map<String, dynamic> map){
     id = map['id'];
-    type = map['type'];
+//    type = _DocumentFileType.values.firstWhere((type) => type.toString() == '_DocumentFileType.${map['type']}');
+    type = EnumToString.fromString(_DocumentFileType.values, map['type']);
     filePath = map['filePath'];
     owner = map['owner']['id'];
   }

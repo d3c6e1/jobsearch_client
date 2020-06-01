@@ -57,7 +57,7 @@ class UserService extends ServiceController<User> {
   }
 
   Future<User> getAuthenticatedUser({AuthorizationToken token}) async {
-    var req = new Request.get("/profile");
+    var req = Request.get("/profile");
     var response = await store.executeUserRequest(req, token: token);
 
     if (response.error != null) {
@@ -65,16 +65,11 @@ class UserService extends ServiceController<User> {
       return null;
     }
 
-//    print(response.body);
-
     switch (response.statusCode) {
       case 200: {
-        var user = User.fromMap(response.body)
+        User user = User.fromMap(response.body)
           ..token = token;
         add(user);
-        // TODO remove
-        print(response.body);
-        print(user.asMap());
         return user;
       } break;
       default: addError(APIError(response.body["error"]));

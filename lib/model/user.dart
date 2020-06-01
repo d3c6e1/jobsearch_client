@@ -8,7 +8,6 @@ class User {
   String email;
   String phoneNumber;
   String city;
-  Map<String, dynamic> socialNetworks;
   DateTime birthDate;
   String username;
   List<CV> cvs;
@@ -18,7 +17,7 @@ class User {
 
   User({this.id, this.email, this.firstName, this.lastName, this.username,
     this.phoneNumber, this.birthDate, this.city, this.additionalName,
-    this.socialNetworks, this.cvs, this.organization, this.documents});
+    this.cvs, this.organization, this.documents});
 
   User.fromMap(Map<String, dynamic> map) {
     id = map['id'];
@@ -29,23 +28,25 @@ class User {
     additionalName = map['additionalName'];
     phoneNumber = map['phoneNumber'];
     city = map['city'];
-    birthDate = map['birthDate'];
+    if(map['birthDate'] != null) {
+      birthDate = DateTime.parse(map['birthDate']);
+    }
 
-    if (map['cvs'] != null) {
+    if (map.containsKey('cvs') && map['cvs'] != null) {
       cvs = List<CV>();
       map['cvs'].forEach((cv) {
         cvs.add(CV.fromMap(cv));
       });
     }
 
-    if (map['documents'] != null) {
+    if (map.containsKey('documents') && map['documents'] != null) {
       documents = List<DocumentFile>();
       map['documents'].forEach((docFile) {
         documents.add(DocumentFile.fromMap(docFile));
       });
     }
 
-    organization = map['organization'] != null
+    organization = map.containsKey('organization') && map['organization'] != null
         ? Organization.fromMap(map['organization'])
         : null;
 
@@ -67,9 +68,10 @@ class User {
       'additionalName': additionalName,
       'phoneNumber': phoneNumber,
       'city': city,
-      'socialNetworks': socialNetworks,
       'birthDate': birthDate,
-      'organization': organization.asMap(),
+      'organization': organization != null ?
+          organization.asMap() :
+          null,
       'cvs': cvs != null ?
           cvs.map((cv) => cv.asMap()).toList() :
           null,

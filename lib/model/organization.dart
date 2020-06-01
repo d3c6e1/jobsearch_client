@@ -13,7 +13,7 @@ class Organization {
     name = map['name'];
     owner = map['owner']['id'];
 
-    if (map['vacancies'] != null) {
+    if (map.containsKey('vacancies') && map['vacancies'] != null) {
       vacancies = List<Vacancy>();
       map['documents'].forEach((vacancy) {
         vacancies.add(Vacancy.fromMap(vacancy));
