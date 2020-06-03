@@ -41,7 +41,7 @@ class MenuBar extends StatelessWidget {
             ],
           ),
         ),
-        DividerLine(),
+        Divider(color: Color(0xFF000000), thickness: 1),
       ],
     );
   }
@@ -100,10 +100,13 @@ class ProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String text = context.watch<User>() != null ?
+        '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}' :
+        'Login';
     return BaseMenuButton(
       onPressed: () => Navigator.pushNamed(context, Routes.profile),
       child: Text(
-        '${context.watch<User>().firstName} ${context.watch<User>().lastName}',
+        text,
         style: buttonTextStyle,
       ),
     );

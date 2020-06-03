@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearch_client/components/components.dart';
-import 'package:jobsearch_client/components/search_bar.dart';
+import 'package:jobsearch_client/components/vacancy_search.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -8,11 +8,15 @@ class HomePage extends StatelessWidget{
     return MainScaffold(
       widgets: <Widget>[
         MenuBar(),
-        SearchBar(),
-        DividerLine(),
+        VacancySearch(
+          headText: 'Try to find vacancies right now',
+        ),
+        divider,
         ResumeSection(),
-        DividerLine(),
-
+        divider,
+        InfoSection(),
+        divider,
+        Footer(),
       ],
     );
   }

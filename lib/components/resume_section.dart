@@ -16,7 +16,7 @@ class _ResumeSectionState extends State<ResumeSection>{
     return Container(
       margin: EdgeInsets.all(10.0),
       child: context.watch<User>() != null ? _LoginedSection()
-          : _Section(),
+          : CreateResumeSection(),
     );
   }
 }
@@ -29,7 +29,7 @@ class _LoginedSection extends StatelessWidget{
         children: [
           ResponsiveGridCol(
             sm: 12,
-            md: 12,
+            md: 9,
             child: Container(
               margin: EdgeInsets.all(10.0),
               child: Column(
@@ -48,13 +48,27 @@ class _LoginedSection extends StatelessWidget{
               ),
             ),
           ),
+          ResponsiveGridCol(
+            sm: 12,
+            md: 3,
+            child: Container(
+              margin: EdgeInsets.all(10.0),
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                child: BaseButton(
+                  onPressed: () => Navigator.pushNamed(context, Routes.my_resumes),
+                  buttonText: 'My resumes',
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class _Section extends StatelessWidget{
+class CreateResumeSection extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -85,13 +99,7 @@ class _Section extends StatelessWidget{
             md: 3,
             child: Container(
               margin: EdgeInsets.all(10.0),
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                child: BaseButton(
-                  onPressed: () => Navigator.pushNamed(context, Routes.signup),
-                  buttonText: 'Create resume',
-                ),
-              ),
+              child: CreateResumeButton(),
             ),
           )
         ],

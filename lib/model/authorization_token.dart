@@ -4,7 +4,7 @@ class AuthorizationToken {
     refreshToken = map["refresh_token"];
 
     if (map.containsKey("expires_in")) {
-      expiresAt = new DateTime.now().add(new Duration(seconds: map["expires_in"]));
+      expiresAt = DateTime.now().add(Duration(seconds: map["expires_in"]));
     } else if (map.containsKey("expiresAt")) {
       expiresAt = DateTime.parse(map["expiresAt"]);
     }

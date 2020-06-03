@@ -2,7 +2,7 @@ import 'dart:async';
 
 class ServiceController<T> extends Stream<T> implements EventSink<T> {
   ServiceController() {
-    _controller = new StreamController<T>.broadcast();
+    _controller = StreamController<T>.broadcast();
   }
 
   StreamController<T> _controller;

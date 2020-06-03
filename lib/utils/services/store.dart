@@ -6,7 +6,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 
 class Store {
   Store({this.storageProvider}) {
-    userController = new UserService(this)
+    userController = UserService(this)
       ..listen((u) {
         if (u?.id != authenticatedUser?.id) {
           authenticatedUser = u;
@@ -16,7 +16,7 @@ class Store {
     _loadPersistentUser();
   }
 
-  static Store instance = new Store();
+  static Store instance = Store();
 
   UserService userController;
   static const String _clientID = 'com.jobsearch.client';
@@ -88,7 +88,7 @@ class Store {
     if (storageProvider != null) {
       storageProvider.load(_storedUserKey).then((contents) {
         try {
-          authenticatedUser = new User.fromMap(json.decode(contents));
+          authenticatedUser = User.fromMap(json.decode(contents));
           userController.add(authenticatedUser);
         } catch (_) {
           userController.add(null);

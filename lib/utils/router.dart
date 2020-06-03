@@ -18,6 +18,12 @@ class Router {
         case Routes.profile:
           return ProfilePage();
           break;
+        case Routes.account:
+          return AccountPage();
+          break;
+        case Routes.my_resumes:
+          return MyResumesPage();
+          break;
         default:
           return null;
           break;
