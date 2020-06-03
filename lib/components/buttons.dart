@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jobsearch_client/model/model.dart';
+import 'package:jobsearch_client/utils/utils.dart';
 import 'components.dart';
+import 'package:provider/provider.dart';
 
 class BaseButton extends StatelessWidget {
   final Function onPressed;
@@ -36,4 +39,22 @@ class BaseButton extends StatelessWidget {
           );
         });
   }
+}
+
+class CreateResumeButton extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      child: BaseButton(
+        onPressed: () {
+          return context.read<User>() != null ?
+          Navigator.pushNamed(context, Routes.createCV) :
+          Navigator.pushNamed(context, Routes.signup);
+        },
+        buttonText: 'Create resume',
+      ),
+    );
+  }
+
 }

@@ -1,5 +1,5 @@
 {
-    "name": "Search for job",
+    "name": "Job search",
     "short_name": "Jobsearch",
     "start_url": ".",
     "display": "standalone",

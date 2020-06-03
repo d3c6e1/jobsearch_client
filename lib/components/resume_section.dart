@@ -29,7 +29,7 @@ class _LoginedSection extends StatelessWidget{
         children: [
           ResponsiveGridCol(
             sm: 12,
-            md: 12,
+            md: 9,
             child: Container(
               margin: EdgeInsets.all(10.0),
               child: Column(
@@ -45,6 +45,20 @@ class _LoginedSection extends StatelessWidget{
                     style: subtitleTextStyle,
                   ),
                 ],
+              ),
+            ),
+          ),
+          ResponsiveGridCol(
+            sm: 12,
+            md: 3,
+            child: Container(
+              margin: EdgeInsets.all(10.0),
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                child: BaseButton(
+                  onPressed: () => Navigator.pushNamed(context, Routes.my_resumes),
+                  buttonText: 'My resumes',
+                ),
               ),
             ),
           ),
@@ -85,17 +99,7 @@ class CreateResumeSection extends StatelessWidget{
             md: 3,
             child: Container(
               margin: EdgeInsets.all(10.0),
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                child: BaseButton(
-                  onPressed: () {
-                    return context.read<User>() != null ?
-                        Navigator.pushNamed(context, Routes.createCV) :
-                        Navigator.pushNamed(context, Routes.signup);
-                  },
-                  buttonText: 'Create resume',
-                ),
-              ),
+              child: CreateResumeButton(),
             ),
           )
         ],

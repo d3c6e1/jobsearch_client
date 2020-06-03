@@ -58,7 +58,6 @@ class _ProfileState extends State<Profile>{
             img: 'img',
             itemName: 'Log out',
             onTap: () {
-              // TODO fix logout
               Store.instance.userController.logout();
               Navigator.pushNamed(context, Routes.home);
             },
@@ -112,9 +111,7 @@ class _ProfileState extends State<Profile>{
 class _ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final String fName = context.watch<User>() != null ?
-        context.select((User user) => user.firstName) :
-        '';
+    final String fName = context.select((User user) => user?.firstName) ?? '';
     return BasePageHeader(
       title: 'Welcome, $fName!',
       subtitle: 'Profile section with some options',

@@ -112,42 +112,43 @@ Widget personalData(BuildContext context){
               children: [
                 TableRow(
                   children: [
-                    paragraphCell(
+                    ParagraphCell(
                       text: 'Full name',
                     ),
-                    dataCell(
-                      text: '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}',
+                    DataCell(
+                      text: '${context.select((User u) => u?.firstName)??''} '
+                          '${context.select((User u) => u?.lastName)??''}',
                     ),
                   ],
                 ),
                 // TODO complete model
                 TableRow(
                   children: [
-                    paragraphCell(
+                    ParagraphCell(
                       text: 'Birth date',
                     ),
-                    dataCell(
-                      text: '11.11.1111',
+                    DataCell(
+                      text: context.select((User u) => u?.birthDate?.toIso8601String())??'',
                     )
                   ],
                 ),
                 TableRow(
                   children: [
-                    paragraphCell(
+                    ParagraphCell(
                       text: 'City',
                     ),
-                    dataCell(
-                      text: 'SimpleCity',
+                    DataCell(
+                      text: context.select((User u) => u?.city)??'',
                     )
                   ],
                 ),
                 TableRow(
                   children: [
-                    paragraphCell(
+                    ParagraphCell(
                       text: 'Phone',
                     ),
-                    dataCell(
-                      text: '0998765432',
+                    DataCell(
+                      text: context.select((User u) => u?.phoneNumber)??'',
                     )
                   ],
                 ),
@@ -168,8 +169,8 @@ Widget personalData(BuildContext context){
   );
 }
 
-class dataCell extends StatelessWidget {
-  const dataCell({
+class DataCell extends StatelessWidget {
+  const DataCell({
     Key key, @required this.text,
   }) : super(key: key);
 
@@ -189,14 +190,12 @@ class dataCell extends StatelessWidget {
   }
 }
 
-class paragraphCell extends StatelessWidget {
-  const paragraphCell({
+class ParagraphCell extends StatelessWidget {
+  const ParagraphCell({
     Key key, @required this.text
   }) : super(key: key);
 
   final String text;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -278,7 +277,7 @@ Widget email(BuildContext context){
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
             child: Text(
-              '${context.select((User u) => u.email)}',
+              '${context.select((User u) => u?.email)??''}',
               style: subtitleTextStyle,
             ),
           ),
