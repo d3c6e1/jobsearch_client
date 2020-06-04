@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
+import 'package:jobsearch_client/services/services.dart';
 
 class Store {
   Store({this.storageProvider}) {

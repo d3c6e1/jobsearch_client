@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
+import 'package:jobsearch_client/services/services.dart';
 
 class UserService extends ServiceController<User> {
   UserService(this.store);
