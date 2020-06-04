@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class AccountPage extends StatefulWidget{
+  static const String route = '/my/account';
+
   @override
   State<StatefulWidget> createState() => _AccountPageState();
 }

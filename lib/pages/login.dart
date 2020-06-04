@@ -2,10 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
+import 'package:jobsearch_client/pages/pages.dart';
+import 'package:jobsearch_client/services/services.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
 class LoginPage extends StatefulWidget {
+  static const String route = '/login';
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -55,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pushNamed(context, Routes.home);
+        Navigator.pushNamed(context, HomePage.route);
       }
     }, onError: (Object err) {
       setState(() {
@@ -138,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       MouseCursor(
                         child: GestureDetector(
-                          onTap: loading?null:()=>Navigator.pushNamed(context, Routes.signup),
+                          onTap: loading?null:()=>Navigator.pushNamed(context, SignUpPage.route),
                           child: Text(
                             "No account? Sign Up",
                             style: TextStyle(

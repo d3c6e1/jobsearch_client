@@ -1,11 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
+import 'package:jobsearch_client/pages/pages.dart';
+import 'package:jobsearch_client/services/services.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget{
+  static const String route = '/profile';
+
   @override
   State<StatefulWidget> createState() => _ProfilePageState();
 }
@@ -45,13 +48,13 @@ class _ProfileState extends State<Profile>{
             context,
             img: 'img',
             itemName: 'My resumes',
-            onTap: () => Navigator.pushNamed(context, Routes.my_resumes),
+            onTap: () => Navigator.pushNamed(context, MyResumesPage.route),
           ),
           _profileItem(
             context,
             img: 'img',
             itemName: 'Personal data',
-            onTap: () => Navigator.pushNamed(context, Routes.account),
+            onTap: () => Navigator.pushNamed(context, AccountPage.route),
           ),
           _profileItem(
             context,
@@ -59,7 +62,7 @@ class _ProfileState extends State<Profile>{
             itemName: 'Log out',
             onTap: () {
               Store.instance.userController.logout();
-              Navigator.pushNamed(context, Routes.home);
+              Navigator.pushNamed(context, HomePage.route);
             },
           ),
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
+import 'package:jobsearch_client/pages/my_resumes.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
@@ -56,7 +56,7 @@ class _LoginedSection extends StatelessWidget{
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: BaseButton(
-                  onPressed: () => Navigator.pushNamed(context, Routes.my_resumes),
+                  onPressed: () => Navigator.pushNamed(context, MyResumesPage.route),
                   buttonText: 'My resumes',
                 ),
               ),

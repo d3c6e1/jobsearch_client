@@ -5,6 +5,8 @@ import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class MyResumesPage extends StatefulWidget{
+  static const String route = '/my/resumes';
+
   @override
   State<StatefulWidget> createState() => _MyResumesPageState();
 }
