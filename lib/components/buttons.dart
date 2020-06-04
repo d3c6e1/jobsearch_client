@@ -56,5 +56,23 @@ class CreateResumeButton extends StatelessWidget{
       ),
     );
   }
+}
 
+class DeleteResumeButton extends StatelessWidget{
+  final int resumeID;
+
+  const DeleteResumeButton({Key key, @required this.resumeID}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      child: BaseButton(
+        onPressed: () {
+
+        },
+        buttonText: 'Delete resume',
+      ),
+    );
+  }
 }

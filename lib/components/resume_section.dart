@@ -41,7 +41,7 @@ class _LoginedSection extends StatelessWidget{
                   ),
                   // TODO
                   Text(
-                    'You now have 3 resumes',
+                    'You now have ${context.select((User u) => u?.cvs?.length)} resumes',
                     style: subtitleTextStyle,
                   ),
                 ],

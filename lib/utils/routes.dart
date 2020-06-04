@@ -9,7 +9,7 @@ class Routes {
   static const String createCV = '/create_resume';
   static const String account = '/account';
   static const String my_resumes = '/my_resumes';
-  static const String vacancies = '/vacancies';
+  static const String resume = '/resume';
   static const String docs = '/docs';
   static const String organizations = '/organizations';
   static const String cv = '/cv';

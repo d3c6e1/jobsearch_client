@@ -6,6 +6,7 @@ class ThemeConfig{
   static Color lightPrimary = Colors.white;
   static Color lightAccent = textThemeAccent;
   static Color lightBG = Colors.white;
+  static Color lightShade = Colors.black12;
 
   static ThemeData lightTheme = ThemeData(
     backgroundColor: lightBG,
