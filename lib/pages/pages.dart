@@ -1,6 +1,6 @@
 export 'signup.dart';
 export 'home.dart';
-export 'cvs.dart';
+export 'resume.dart';
 export 'docs.dart';
 export 'organizations.dart';
 export 'profile.dart';

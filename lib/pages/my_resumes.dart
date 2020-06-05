@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
+import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -72,7 +73,8 @@ class __ResumesListState extends State<_ResumesList> {
                   ),
                   hoverColor: ThemeConfig.lightShade,
                   onTap: (){
-
+                    
+                    return Navigator.pushNamed(context, ResumePage.route);
                   },
                 ),
               ),
