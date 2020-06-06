@@ -8,7 +8,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 
 
 class LoginPage extends StatefulWidget {
-  static const String route = '/login';
+  static const String ROUTE = '/login';
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pushNamed(context, HomePage.route);
+        Navigator.pushNamed(context, HomePage.ROUTE);
       }
     }, onError: (Object err) {
       setState(() {
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       MouseCursor(
                         child: GestureDetector(
-                          onTap: loading?null:()=>Navigator.pushNamed(context, SignUpPage.route),
+                          onTap: loading?null:()=>Navigator.pushNamed(context, SignUpPage.ROUTE),
                           child: Text(
                             "No account? Sign Up",
                             style: TextStyle(

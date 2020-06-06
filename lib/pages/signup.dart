@@ -8,7 +8,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 
 
 class SignUpPage extends StatefulWidget {
-  static const String route = '/register';
+  static const String ROUTE = '/register';
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -66,7 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pushNamed(context, HomePage.route);
+        Navigator.pushNamed(context, HomePage.ROUTE);
       }
     }, onError: (Object err) {
       setState(() {
@@ -195,7 +195,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       MouseCursor(
                         child: GestureDetector(
                           onTap: loading ? null : (){
-                            Navigator.pushNamed(context, LoginPage.route);
+                            Navigator.pushNamed(context, LoginPage.ROUTE);
                           },
                           child: Text(
                             "Already signed up? Login",

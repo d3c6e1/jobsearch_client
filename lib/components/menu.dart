@@ -51,7 +51,7 @@ class FindVacanciesButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, MyResumesPage.route),
+      onPressed: () => Navigator.pushNamed(context, MyResumesPage.ROUTE),
       child: Text(
         'Find vacancies',
         style: buttonTextStyle,
@@ -65,8 +65,8 @@ class PostCVButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseMenuButton(
       onPressed: () => Navigator.pushNamed(context,
-          context.read<User>() != null ? SignUpPage.route
-              : SignUpPage.route
+          context.read<User>() != null ? SignUpPage.ROUTE
+              : SignUpPage.ROUTE
       ),
       child: Text(
         'Post resume',
@@ -84,7 +84,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, LoginPage.route),
+      onPressed: () => Navigator.pushNamed(context, LoginPage.ROUTE),
       child: Text(
         'Login',
         style: buttonTextStyle,
@@ -104,7 +104,7 @@ class ProfileButton extends StatelessWidget {
         '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}' :
         'Login';
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, ProfilePage.route),
+      onPressed: () => Navigator.pushNamed(context, ProfilePage.ROUTE),
       child: Text(
         text,
         style: buttonTextStyle,

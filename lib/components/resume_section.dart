@@ -56,7 +56,7 @@ class _LoginedSection extends StatelessWidget{
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: BaseButton(
-                  onPressed: () => Navigator.pushNamed(context, MyResumesPage.route),
+                  onPressed: () => Navigator.pushNamed(context, MyResumesPage.ROUTE),
                   buttonText: 'My resumes',
                 ),
               ),

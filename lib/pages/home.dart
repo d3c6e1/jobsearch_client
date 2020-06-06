@@ -3,7 +3,7 @@ import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/components/vacancy_search.dart';
 
 class HomePage extends StatelessWidget{
-  static const String route = '/';
+  static const String ROUTE = '/';
 
   @override
   Widget build(BuildContext context) {

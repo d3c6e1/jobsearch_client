@@ -8,7 +8,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class MyResumesPage extends StatefulWidget{
-  static const String route = '/my/resumes';
+  static const String ROUTE = '/my/resumes';
 
   @override
   State<StatefulWidget> createState() => _MyResumesPageState();
@@ -75,7 +75,7 @@ class __ResumesListState extends State<_ResumesList> {
                   ),
                   hoverColor: ThemeConfig.lightShade,
                   onTap: ()=> locator<NavigationService>().navigateTo(
-                      ResumePage.route, queryParams: {
+                      ResumePage.ROUTE, queryParams: {
                         'id': resumes[index].id.toString(),
                       }),
                 ),

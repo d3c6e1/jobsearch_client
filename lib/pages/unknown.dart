@@ -25,7 +25,7 @@ class UnknownPage extends StatelessWidget{
               child: Center(
                 child: BaseButton(
                   buttonText: 'Go home',
-                  onPressed: () => Navigator.popAndPushNamed(context, HomePage.route),
+                  onPressed: () => Navigator.popAndPushNamed(context, HomePage.ROUTE),
                 ),
               ),
             ),
