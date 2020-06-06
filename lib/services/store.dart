@@ -6,6 +6,7 @@ import 'package:jobsearch_client/services/services.dart';
 
 class Store {
   Store({this.storageProvider}) {
+    cvController = CVService(this);
     userController = UserService(this)
       ..listen((u) {
         if (u?.id != authenticatedUser?.id) {
@@ -19,6 +20,8 @@ class Store {
   static Store instance = Store();
 
   UserService userController;
+  CVService cvController;
+
   static const String _clientID = 'com.jobsearch.client';
   String get clientAuthorization => "Basic ${const Base64Encoder().convert("$_clientID:".codeUnits)}";
 
@@ -28,6 +31,7 @@ class Store {
     if (u != null) {
       storageProvider?.store(_storedUserKey, json.encode(u.asMap()));
     } else {
+      cvController.clearCache();
       storageProvider?.delete(_storedUserKey);
     }
   }

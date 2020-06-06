@@ -4,7 +4,7 @@ import 'package:jobsearch_client/extensions/extensions.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   var routingData = settings.name.getRoutingData; // Get the routing Data
-  switch (settings.name) {
+  switch (routingData.route) {
     case HomePage.route:
       return _getPageRoute(HomePage(), settings);
       break;
