@@ -28,7 +28,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(ResumePage(id: id), settings);
       break;
     default:
-      return _getPageRoute(HomePage(), settings);
+      return _getPageRoute(UnknownPage(), settings);
       break;
   }
 }
