@@ -6,10 +6,16 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 40),
+      padding: EdgeInsets.symmetric(vertical: 16),
       child: Align(
         alignment: Alignment.centerRight,
-        child: TextBody(text: "Copyright © 2020"),
+        child: Container(
+          margin: EdgeInsets.only(bottom: 24),
+          child: Text(
+            'Copyright © 2020',
+            style: bodyTextStyle,
+          ),
+        )        ,
       ),
     );
   }

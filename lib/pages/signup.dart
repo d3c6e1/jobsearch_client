@@ -2,10 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
+import 'package:jobsearch_client/pages/pages.dart';
+import 'package:jobsearch_client/services/services.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 
 
 class SignUpPage extends StatefulWidget {
+  static const String route = '/register';
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -62,7 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pushNamed(context, Routes.home);
+        Navigator.pushNamed(context, HomePage.route);
       }
     }, onError: (Object err) {
       setState(() {
@@ -191,7 +195,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       MouseCursor(
                         child: GestureDetector(
                           onTap: loading ? null : (){
-                            Navigator.pushNamed(context, Routes.login);
+                            Navigator.pushNamed(context, LoginPage.route);
                           },
                           child: Text(
                             "Already signed up? Login",

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
-import 'components.dart';
+import 'package:jobsearch_client/pages/pages.dart';
 import 'package:provider/provider.dart';
 
 class MenuBar extends StatelessWidget {
@@ -51,7 +51,7 @@ class FindVacanciesButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, Routes.vacancies),
+      onPressed: () => Navigator.pushNamed(context, MyResumesPage.route),
       child: Text(
         'Find vacancies',
         style: buttonTextStyle,
@@ -65,8 +65,8 @@ class PostCVButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseMenuButton(
       onPressed: () => Navigator.pushNamed(context,
-          context.read<User>() != null ? Routes.createCV
-              : Routes.signup
+          context.read<User>() != null ? SignUpPage.route
+              : SignUpPage.route
       ),
       child: Text(
         'Post resume',
@@ -84,7 +84,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, Routes.login),
+      onPressed: () => Navigator.pushNamed(context, LoginPage.route),
       child: Text(
         'Login',
         style: buttonTextStyle,
@@ -104,7 +104,7 @@ class ProfileButton extends StatelessWidget {
         '${context.select((User u) => u.firstName)} ${context.select((User u) => u.lastName)}' :
         'Login';
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, Routes.profile),
+      onPressed: () => Navigator.pushNamed(context, ProfilePage.route),
       child: Text(
         text,
         style: buttonTextStyle,

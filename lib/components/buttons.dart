@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/utils/utils.dart';
+import 'package:jobsearch_client/pages/pages.dart';
 import 'components.dart';
 import 'package:provider/provider.dart';
 
@@ -49,12 +49,30 @@ class CreateResumeButton extends StatelessWidget{
       child: BaseButton(
         onPressed: () {
           return context.read<User>() != null ?
-          Navigator.pushNamed(context, Routes.createCV) :
-          Navigator.pushNamed(context, Routes.signup);
+          Navigator.pushNamed(context, SignUpPage.route) :
+          Navigator.pushNamed(context, SignUpPage.route);
         },
         buttonText: 'Create resume',
       ),
     );
   }
+}
 
+class DeleteResumeButton extends StatelessWidget{
+  final int resumeID;
+
+  const DeleteResumeButton({Key key, @required this.resumeID}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      child: BaseButton(
+        onPressed: () {
+
+        },
+        buttonText: 'Delete resume',
+      ),
+    );
+  }
 }
