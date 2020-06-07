@@ -3,7 +3,7 @@ import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 
 class UnknownPage extends StatelessWidget{
-  static const String route = '/unknown';
+  static const String ROUTE = '/unknown';
 
   @override
   Widget build(BuildContext context) {

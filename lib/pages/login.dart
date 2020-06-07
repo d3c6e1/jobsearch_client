@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(value)));
+    _scaffoldKey?.currentState?.showSnackBar(SnackBar(content: Text(value)));
   }
 
   @override

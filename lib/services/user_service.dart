@@ -88,9 +88,9 @@ class UserService extends ServiceController<User> {
 
     switch (response.statusCode) {
       case 200: {
-        return User.fromMap(response.body);
+        User user = User.fromMap(response.body);
 //        add(user);
-//        return user;
+        return user;
       } break;
       default: addError(APIError(response.body["error"]));
     }

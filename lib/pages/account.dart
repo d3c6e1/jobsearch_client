@@ -123,7 +123,6 @@ Widget personalData(BuildContext context){
                     ),
                   ],
                 ),
-                // TODO complete model
                 TableRow(
                   children: [
                     ParagraphCell(
