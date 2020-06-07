@@ -1,9 +1,11 @@
+import 'package:jobsearch_client/model/model.dart';
+
 class CV{
   int id;
   String name;
   DateTime publishDate;
   int owner;
-  Map<String, dynamic> data;
+  CVData data;
 
   CV({this.id, this.name, this.publishDate, this.owner, this.data});
 

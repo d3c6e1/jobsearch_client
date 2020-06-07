@@ -4,6 +4,7 @@ import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/services/services.dart';
+import 'package:jobsearch_client/utils/format.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
@@ -59,7 +60,7 @@ class _ResumePageState extends State<ResumePage>{
         SizedBox(
           height: 20,
         ),
-        _ResumePageHeader(),
+//        _ResumePageHeader(),
         user != null ?
             Column(
               children: [
@@ -97,12 +98,25 @@ class _ResumeInformation extends StatelessWidget{
             md: 12,
             child: ResponsiveGridRow(
               children: [
+                resumeBasicData(cv, user),
                 userInformation(user),
                 resumePhoto(user),
+                ResponsiveGridCol(
+                    xs: 12,
+                    sm: 12,
+                    md: 12,
+                    child: divider
+                ),
+                userContactInformation(user),
               ],
             ),
           ),
-          ResponsiveGridCol(child: divider),
+          ResponsiveGridCol(
+              xs: 12,
+              sm: 12,
+              md: 12,
+              child: divider
+          ),
           ResponsiveGridCol(
             xs: 12,
             sm: 12,
@@ -124,9 +138,26 @@ Widget userInformation(User user){
     xs: 12,
     sm: 12,
     md: 8,
-    child: Container(
-      child: Text(
-        '${user.asMap().toString()}'
+    child: Center(
+      child: Table(
+        children: [
+
+        ],
+      ),
+    ),
+  );
+}
+
+Widget userContactInformation(User user){
+  return ResponsiveGridCol(
+    xs: 12,
+    sm: 12,
+    md: 12,
+    child: Center(
+      child: Table(
+        children: [
+
+        ],
       ),
     ),
   );
@@ -162,6 +193,34 @@ Widget resumePhoto(User user){
   );
 }
 
+Widget resumeBasicData(CV cv, User user){
+  return ResponsiveGridCol(
+    xs: 12,
+    sm: 12,
+    md: 12,
+    child: Column(
+      children: [
+        Container(
+          child: Text(
+            'Resume updated: ${Formatting.formatDate(cv.publishDate.toLocal())}',
+            style: subtitleThemeTextStyle,
+          ),
+        ),
+        Container(
+          child: Text(
+            '${user.firstName} ${user.lastName}',
+            style: headlineTextStyle,
+          ),
+        ),Container(
+          child: Text(
+
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 class _ResumePageHeader extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -186,8 +245,12 @@ class _ResumeOptions extends StatelessWidget{
         children: [
           context.select((User u) => u?.id) != resumeOwnerID ?
               SizedBox.shrink() :
-              _EditButton(),
-          divider,
+              Column(
+                children: [
+                  _EditButton(),
+                  divider,
+                ],
+              ),
         ],
       ),
     );
