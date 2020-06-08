@@ -49,7 +49,7 @@ class CreateResumeButton extends StatelessWidget{
       child: BaseButton(
         onPressed: () {
           return context.read<User>() != null ?
-          Navigator.pushNamed(context, SignUpPage.ROUTE) :
+          Navigator.pushNamed(context, CreateResumePage.ROUTE) :
           Navigator.pushNamed(context, SignUpPage.ROUTE);
         },
         buttonText: 'Create resume',

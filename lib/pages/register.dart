@@ -88,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: <Widget>[
+      children: <Widget>[
         MenuBar(),
         SizedBox(height: 20.0,),
         _buildForm(),
@@ -100,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   _buildForm(){
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: 500,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

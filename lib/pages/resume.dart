@@ -55,22 +55,16 @@ class _ResumePageState extends State<ResumePage>{
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: [
+      children: [
         MenuBar(),
         SizedBox(
           height: 20,
         ),
-        _ResumePageHeader(),
         user != null ?
             Column(
               children: [
-                _ResumeOptions(
-                  resumeOwnerID: cv?.owner,
-                ),
-                _ResumeInformation(
-                  cv: cv,
-                  user: user,
-                ),
+                _resumeOptions(context, cv?.owner),
+                _resumeInformation(cv, user),
               ],
             ) : Center(child: CircularProgressIndicator()),
         divider,
@@ -80,64 +74,56 @@ class _ResumePageState extends State<ResumePage>{
   }
 }
 
-class _ResumeInformation extends StatelessWidget{
-  final CV cv;
-  final User user;
-
-  const _ResumeInformation({Key key, @required this.cv, @required this.user}) : super(key: key,);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
-      child: ResponsiveGridRow(
-        children: [
-          ResponsiveGridCol(
+Widget _resumeInformation(CV cv, User user){
+  return Container(
+    margin: EdgeInsets.symmetric(vertical: 10.0),
+    child: ResponsiveGridRow(
+      children: [
+        ResponsiveGridCol(
+          xs: 12,
+          sm: 12,
+          md: 12,
+          child: ResponsiveGridRow(
+            children: [
+              resumeBasicData(cv, user),
+              userInformation(user),
+              resumePhoto(user),
+              ResponsiveGridCol(
+                  xs: 12,
+                  sm: 12,
+                  md: 12,
+                  child: divider
+              ),
+              userContactInformation(user),
+            ],
+          ),
+        ),
+        ResponsiveGridCol(
             xs: 12,
             sm: 12,
             md: 12,
-            child: ResponsiveGridRow(
-              children: [
-                resumeBasicData(cv, user),
-                userInformation(user),
-                resumePhoto(user),
-                ResponsiveGridCol(
-                    xs: 12,
-                    sm: 12,
-                    md: 12,
-                    child: divider
-                ),
-                userContactInformation(user),
-              ],
-            ),
+            child: divider
+        ),
+        ResponsiveGridCol(
+          xs: 12,
+          sm: 12,
+          md: 12,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              jobExpierence(cv),
+              divider,
+              education(cv),
+              divider,
+              lenguageLvl(cv),
+              divider,
+              additionalData(cv),
+            ],
           ),
-          ResponsiveGridCol(
-              xs: 12,
-              sm: 12,
-              md: 12,
-              child: divider
-          ),
-          ResponsiveGridCol(
-            xs: 12,
-            sm: 12,
-            md: 12,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                jobExpierence(cv),
-                divider,
-                education(cv),
-                divider,
-                lenguageLvl(cv),
-                divider,
-                additionalData(cv),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
 }
 
 Widget jobExpierence(CV cv){
@@ -355,47 +341,28 @@ Widget resumeBasicData(CV cv, User user){
   );
 }
 
-class _ResumePageHeader extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: SizedBox.shrink(),
-    );
-  }
+Widget _resumeOptions(BuildContext context, int owner){
+  return Container(
+    margin: EdgeInsets.all(10),
+    child: Column(
+      children: [
+        context.select((User u) => u?.id) != owner ?
+        SizedBox.shrink() :
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _editButton(),
+            divider,
+          ],
+        ),
+      ],
+    ),
+  );
 }
 
-class _ResumeOptions extends StatelessWidget{
-  final int resumeOwnerID;
-
-  const _ResumeOptions({Key key,@required this.resumeOwnerID}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          context.select((User u) => u?.id) != resumeOwnerID ?
-              SizedBox.shrink() :
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _EditButton(),
-                  divider,
-                ],
-              ),
-        ],
-      ),
-    );
-  }
-}
-
-class _EditButton extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return BaseButton(
-      buttonText: 'Edit',
-      onPressed: () => null,
-    );
-  }
+Widget _editButton(){
+  return BaseButton(
+    buttonText: 'Edit',
+    onPressed: () => null,
+  );
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MainScaffold extends StatelessWidget {
-  final List<Widget> widgets;
+  final List<Widget> children;
 
-  const MainScaffold({Key key, this.widgets}) : super(key: key);
+  const MainScaffold({Key key, this.children}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class MainScaffold extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 32),
               child: Column(
-                  children: widgets
+                  children: children
               ),
             ),
           )

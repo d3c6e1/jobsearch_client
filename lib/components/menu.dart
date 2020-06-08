@@ -65,7 +65,7 @@ class PostCVButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseMenuButton(
       onPressed: () => Navigator.pushNamed(context,
-          context.read<User>() != null ? SignUpPage.ROUTE
+          context.read<User>() != null ? CreateResumePage.ROUTE
               : SignUpPage.ROUTE
       ),
       child: Text(

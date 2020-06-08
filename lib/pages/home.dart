@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: <Widget>[
+      children: <Widget>[
         MenuBar(),
         VacancySearch(
           headText: 'Try to find vacancies right now',

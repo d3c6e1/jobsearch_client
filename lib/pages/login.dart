@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: <Widget>[
+      children: <Widget>[
         MenuBar(),
         SizedBox(height: 20.0,),
         _buildForm(),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _buildForm(){
     return Container(
-      width: MediaQuery.of(context).size.width,
+    width: 500,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

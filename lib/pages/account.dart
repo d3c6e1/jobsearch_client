@@ -18,7 +18,7 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: [
+      children: [
         MenuBar(),
         SizedBox(
           height: 20,

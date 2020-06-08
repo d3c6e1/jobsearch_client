@@ -7,7 +7,7 @@ import 'package:responsive_grid/responsive_grid.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget{
-  static const String ROUTE = '/profile';
+  static const String ROUTE = '/my';
 
   @override
   State<StatefulWidget> createState() => _ProfilePageState();
@@ -17,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage>{
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: [
+      children: [
         MenuBar(),
         SizedBox(
           height: 20,

@@ -27,6 +27,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       var id = int.tryParse(routingData['id']); // Get the id from the data.
       return _getPageRoute(ResumePage(id: id), settings);
       break;
+    case CreateResumePage.ROUTE:
+      return _getPageRoute(CreateResumePage(), settings);
     default:
       return _getPageRoute(UnknownPage(), settings);
       break;

@@ -1,3 +1,11 @@
+enum languages{
+  english, ukrainian, russian
+}
+
+enum laguagesLvls{
+  low, middle, high
+}
+
 class CVData{
   Map<String, dynamic> jobExperience;
   Map<String, dynamic> education;
