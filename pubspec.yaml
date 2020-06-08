@@ -23,6 +23,7 @@ dependencies:
   enum_to_string: ^1.0.9
   intl: ^0.16.1
   get_it: ^4.0.2
+  age: ^0.0.1
 
 dev_dependencies:
   flutter_test:

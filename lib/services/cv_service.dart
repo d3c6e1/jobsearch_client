@@ -31,4 +31,27 @@ class CVService extends ServiceController<CV>{
     }
     return null;
   }
+
+  Future<CV> createResume(CV cv) async {
+    Request req = Request.post('/cvs', cv.asMap());
+
+    Response response = await store.executeUserRequest(req);
+
+    if (response.error != null) {
+      addError(response.error);
+      return null;
+    }
+
+    switch (response.statusCode) {
+      case 200: {
+        _recentCV = CV.fromMap(response.body);
+        add(_recentCV);
+        return _recentCV;
+      } break;
+
+      default: addError(APIError(response.body["error"]));
+    }
+
+    return null;
+  }
 }

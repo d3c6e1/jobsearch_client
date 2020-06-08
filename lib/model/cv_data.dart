@@ -6,11 +6,21 @@ class CVData{
   String additionalData;
 
   CVData.fromMap(Map<String, dynamic> map){
-    jobExperience = Map.from(map['jobExperience']);
-    education = Map.from(map['education']);
-    skills = Map.from(map['skills']);
-    languagesLVL = Map.from(map['languagesLVL']);
-    additionalData = map['additionalData'];
+    if (map.containsKey('jobExperience') && map['jobExperience'] != null){
+      jobExperience = Map.from(map['jobExperience']);
+    }
+    if (map.containsKey('education') && map['education'] != null){
+      jobExperience = Map.from(map['education']);
+    }
+    if (map.containsKey('skills') && map['skills'] != null){
+      jobExperience = Map.from(map['skills']);
+    }
+    if (map.containsKey('languagesLVL') && map['languagesLVL'] != null){
+      jobExperience = Map.from(map['languagesLVL']);
+    }
+    if (map.containsKey('additionalData') && map['additionalData'] != null){
+      jobExperience = Map.from(map['additionalData']);
+    }
   }
 
   Map<String, dynamic> asMap() => {

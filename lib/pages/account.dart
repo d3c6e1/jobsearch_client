@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/utils/theme_config.dart';
+import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
@@ -117,7 +118,7 @@ Widget personalData(BuildContext context){
                     ParagraphCell(
                       text: 'Full name',
                     ),
-                    DataCell(
+                    DataTableCell(
                       text: '${context.select((User u) => u?.firstName)??''} '
                           '${context.select((User u) => u?.lastName)??''}',
                     ),
@@ -128,8 +129,8 @@ Widget personalData(BuildContext context){
                     ParagraphCell(
                       text: 'Birth date',
                     ),
-                    DataCell(
-                      text: context.select((User u) => u?.birthDate?.toIso8601String())??'',
+                    DataTableCell(
+                      text: context.select((User u) => Formatting.formatDate(u?.birthDate))??'',
                     )
                   ],
                 ),
@@ -138,7 +139,7 @@ Widget personalData(BuildContext context){
                     ParagraphCell(
                       text: 'City',
                     ),
-                    DataCell(
+                    DataTableCell(
                       text: context.select((User u) => u?.city)??'',
                     )
                   ],
@@ -148,7 +149,7 @@ Widget personalData(BuildContext context){
                     ParagraphCell(
                       text: 'Phone',
                     ),
-                    DataCell(
+                    DataTableCell(
                       text: context.select((User u) => u?.phoneNumber)??'',
                     )
                   ],
@@ -170,8 +171,8 @@ Widget personalData(BuildContext context){
   );
 }
 
-class DataCell extends StatelessWidget {
-  const DataCell({
+class DataTableCell extends StatelessWidget {
+  const DataTableCell({
     Key key, @required this.text,
   }) : super(key: key);
 

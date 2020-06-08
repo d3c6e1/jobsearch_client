@@ -60,7 +60,7 @@ class _ResumePageState extends State<ResumePage>{
         SizedBox(
           height: 20,
         ),
-//        _ResumePageHeader(),
+        _ResumePageHeader(),
         user != null ?
             Column(
               children: [
@@ -122,8 +122,15 @@ class _ResumeInformation extends StatelessWidget{
             sm: 12,
             md: 12,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
+                jobExpierence(cv),
+                divider,
+                education(cv),
+                divider,
+                lenguageLvl(cv),
+                divider,
+                additionalData(cv),
               ],
             ),
           ),
@@ -133,6 +140,66 @@ class _ResumeInformation extends StatelessWidget{
   }
 }
 
+Widget jobExpierence(CV cv){
+  return
+    Container(
+      child: Column(
+        children: [
+          Text(
+            'Experience',
+            style: headlineTextStyle,
+          ),
+
+        ],
+      ),
+    );
+}
+
+Widget education(CV cv){
+  return
+    Container(
+      child: Column(
+        children: [
+          Text(
+            'Education',
+            style: headlineTextStyle,
+          ),
+
+        ],
+      ),
+    );
+}
+
+Widget lenguageLvl(CV cv){
+  return
+    Container(
+      child: Column(
+        children: [
+          Text(
+            'Languages',
+            style: headlineTextStyle,
+          ),
+
+        ],
+      ),
+    );
+}
+
+Widget additionalData(CV cv){
+  return
+    Container(
+      child: Column(
+        children: [
+          Text(
+            'Additional information',
+            style: headlineTextStyle,
+          ),
+
+        ],
+      ),
+    );
+}
+
 Widget userInformation(User user){
   return ResponsiveGridCol(
     xs: 12,
@@ -140,8 +207,35 @@ Widget userInformation(User user){
     md: 8,
     child: Center(
       child: Table(
+        columnWidths: {
+          0: FlexColumnWidth(1.0),
+          1: FlexColumnWidth(4.0),
+        },
         children: [
-
+          TableRow(
+            children: [
+              ParagraphCell(
+                text: 'Age:',
+              ),
+              DataTableCell(
+                text: user.birthDate != null ?
+                '${Formatting.getAge(user.birthDate)}' :
+                '',
+              )
+            ],
+          ),
+          TableRow(
+            children: [
+              ParagraphCell(
+                text: 'City:',
+              ),
+              DataTableCell(
+                text: user.city != null ?
+                '${user.city}' :
+                '',
+              )
+            ],
+          ),
         ],
       ),
     ),
@@ -154,9 +248,45 @@ Widget userContactInformation(User user){
     sm: 12,
     md: 12,
     child: Center(
-      child: Table(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
+          Text(
+            'Contacts',
+            style: headlineTextStyle,
+          ),
+          Table(
+            columnWidths: {
+              0: FlexColumnWidth(1.0),
+              1: FlexColumnWidth(4.0),
+            },
+            children: [
+              TableRow(
+                  children: [
+                    ParagraphCell(
+                      text: 'Email:',
+                    ),
+                    DataTableCell(
+                      text: user.email != null ?
+                      '${user.email}' :
+                      '',
+                    )
+                  ]
+              ),
+              TableRow(
+                  children: [
+                    ParagraphCell(
+                      text: 'Phone number:',
+                    ),
+                    DataTableCell(
+                      text: user.phoneNumber != null ?
+                      '${user.phoneNumber}' :
+                      '',
+                    )
+                  ]
+              ),
+            ],
+          ),
         ],
       ),
     ),
@@ -199,6 +329,7 @@ Widget resumeBasicData(CV cv, User user){
     sm: 12,
     md: 12,
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           child: Text(
@@ -207,13 +338,16 @@ Widget resumeBasicData(CV cv, User user){
           ),
         ),
         Container(
+          margin: EdgeInsets.symmetric(vertical: 10.0),
           child: Text(
             '${user.firstName} ${user.lastName}',
             style: headlineTextStyle,
           ),
         ),Container(
+          margin: EdgeInsets.symmetric(vertical: 5.0),
           child: Text(
-
+            '${cv.name}',
+            style: headlineSecondaryTextStyle,
           ),
         ),
       ],
@@ -225,9 +359,7 @@ class _ResumePageHeader extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: SizedBox(
-        height: 20,
-      ),
+      child: SizedBox.shrink(),
     );
   }
 }
@@ -246,6 +378,7 @@ class _ResumeOptions extends StatelessWidget{
           context.select((User u) => u?.id) != resumeOwnerID ?
               SizedBox.shrink() :
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _EditButton(),
                   divider,
