@@ -5,7 +5,6 @@ class CV{
   String name;
   DateTime publishDate;
   int owner;
-  //TODO replace
   CVData data;
 
   CV({this.id, this.name, this.publishDate, this.owner, this.data});
@@ -18,7 +17,7 @@ class CV{
     data = CVData.fromMap(map['data']);
   }
 
-  Map<String, dynamic> asMap() =>{
+  Map<String, dynamic> asMap() => {
     'id': id,
     'name': name,
     'publishDate': publishDate,

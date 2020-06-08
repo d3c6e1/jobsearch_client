@@ -2,7 +2,7 @@ enum languages{
   english, ukrainian, russian
 }
 
-enum laguagesLvls{
+enum languagesLvls{
   low, middle, high
 }
 
@@ -12,6 +12,8 @@ class CVData{
   Map<String, dynamic> skills;
   Map<String, dynamic> languagesLVL;
   String additionalData;
+
+  CVData();
 
   CVData.fromMap(Map<String, dynamic> map){
     if (map.containsKey('jobExperience') && map['jobExperience'] != null){
@@ -32,10 +34,10 @@ class CVData{
   }
 
   Map<String, dynamic> asMap() => {
-    'jobExperience': jobExperience,
-    'education': education,
-    'skills': skills,
-    'languagesLVL': languagesLVL,
-    'additionalData': additionalData,
+    'jobExperience': jobExperience??'',
+    'education': education??'',
+    'skills': skills??'',
+    'languagesLVL': languagesLVL??'',
+    'additionalData': additionalData??'',
   };
 }

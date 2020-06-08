@@ -72,297 +72,297 @@ class _ResumePageState extends State<ResumePage>{
       ],
     );
   }
-}
 
-Widget _resumeInformation(CV cv, User user){
-  return Container(
-    margin: EdgeInsets.symmetric(vertical: 10.0),
-    child: ResponsiveGridRow(
-      children: [
-        ResponsiveGridCol(
-          xs: 12,
-          sm: 12,
-          md: 12,
-          child: ResponsiveGridRow(
-            children: [
-              resumeBasicData(cv, user),
-              userInformation(user),
-              resumePhoto(user),
-              ResponsiveGridCol(
-                  xs: 12,
-                  sm: 12,
-                  md: 12,
-                  child: divider
-              ),
-              userContactInformation(user),
-            ],
-          ),
-        ),
-        ResponsiveGridCol(
+  _resumeInformation(CV cv, User user){
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: ResponsiveGridRow(
+        children: [
+          ResponsiveGridCol(
             xs: 12,
             sm: 12,
             md: 12,
-            child: divider
-        ),
-        ResponsiveGridCol(
-          xs: 12,
-          sm: 12,
-          md: 12,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              jobExpierence(cv),
-              divider,
-              education(cv),
-              divider,
-              lenguageLvl(cv),
-              divider,
-              additionalData(cv),
-            ],
+            child: ResponsiveGridRow(
+              children: [
+                resumeBasicData(cv, user),
+                userInformation(user),
+                resumePhoto(user),
+                ResponsiveGridCol(
+                    xs: 12,
+                    sm: 12,
+                    md: 12,
+                    child: divider
+                ),
+                userContactInformation(user),
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget jobExpierence(CV cv){
-  return
-    Container(
-      child: Column(
-        children: [
-          Text(
-            'Experience',
-            style: headlineTextStyle,
+          ResponsiveGridCol(
+              xs: 12,
+              sm: 12,
+              md: 12,
+              child: divider
           ),
-
-        ],
-      ),
-    );
-}
-
-Widget education(CV cv){
-  return
-    Container(
-      child: Column(
-        children: [
-          Text(
-            'Education',
-            style: headlineTextStyle,
-          ),
-
-        ],
-      ),
-    );
-}
-
-Widget lenguageLvl(CV cv){
-  return
-    Container(
-      child: Column(
-        children: [
-          Text(
-            'Languages',
-            style: headlineTextStyle,
-          ),
-
-        ],
-      ),
-    );
-}
-
-Widget additionalData(CV cv){
-  return
-    Container(
-      child: Column(
-        children: [
-          Text(
-            'Additional information',
-            style: headlineTextStyle,
-          ),
-
-        ],
-      ),
-    );
-}
-
-Widget userInformation(User user){
-  return ResponsiveGridCol(
-    xs: 12,
-    sm: 12,
-    md: 8,
-    child: Center(
-      child: Table(
-        columnWidths: {
-          0: FlexColumnWidth(1.0),
-          1: FlexColumnWidth(4.0),
-        },
-        children: [
-          TableRow(
-            children: [
-              ParagraphCell(
-                text: 'Age:',
-              ),
-              DataTableCell(
-                text: user.birthDate != null ?
-                '${Formatting.getAge(user.birthDate)}' :
-                '',
-              )
-            ],
-          ),
-          TableRow(
-            children: [
-              ParagraphCell(
-                text: 'City:',
-              ),
-              DataTableCell(
-                text: user.city != null ?
-                '${user.city}' :
-                '',
-              )
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-Widget userContactInformation(User user){
-  return ResponsiveGridCol(
-    xs: 12,
-    sm: 12,
-    md: 12,
-    child: Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Contacts',
-            style: headlineTextStyle,
-          ),
-          Table(
-            columnWidths: {
-              0: FlexColumnWidth(1.0),
-              1: FlexColumnWidth(4.0),
-            },
-            children: [
-              TableRow(
-                  children: [
-                    ParagraphCell(
-                      text: 'Email:',
-                    ),
-                    DataTableCell(
-                      text: user.email != null ?
-                      '${user.email}' :
-                      '',
-                    )
-                  ]
-              ),
-              TableRow(
-                  children: [
-                    ParagraphCell(
-                      text: 'Phone number:',
-                    ),
-                    DataTableCell(
-                      text: user.phoneNumber != null ?
-                      '${user.phoneNumber}' :
-                      '',
-                    )
-                  ]
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-Widget resumePhoto(User user){
-  return ResponsiveGridCol(
-    xs: 12,
-    sm: 12,
-    md: 4,
-    child: Container(
-    margin: EdgeInsets.symmetric(horizontal: 5.0),
-    padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black12,
-              ),
-              child: Image.asset(
-                'assets/images/no_photo_user.png',
-                height: 100,
-                width: 100,
-              ),
+          ResponsiveGridCol(
+            xs: 12,
+            sm: 12,
+            md: 12,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                jobExperience(cv),
+                divider,
+                education(cv),
+                divider,
+                languageLvl(cv),
+                divider,
+                additionalData(cv),
+              ],
             ),
           ),
         ],
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget resumeBasicData(CV cv, User user){
-  return ResponsiveGridCol(
-    xs: 12,
-    sm: 12,
-    md: 12,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          child: Text(
-            'Resume updated: ${Formatting.formatDate(cv.publishDate.toLocal())}',
-            style: subtitleThemeTextStyle,
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 10.0),
-          child: Text(
-            '${user.firstName} ${user.lastName}',
-            style: headlineTextStyle,
-          ),
-        ),Container(
-          margin: EdgeInsets.symmetric(vertical: 5.0),
-          child: Text(
-            '${cv.name}',
-            style: headlineSecondaryTextStyle,
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _resumeOptions(BuildContext context, int owner){
-  return Container(
-    margin: EdgeInsets.all(10),
-    child: Column(
-      children: [
-        context.select((User u) => u?.id) != owner ?
-        SizedBox.shrink() :
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+  jobExperience(CV cv){
+    return
+      Container(
+        child: Column(
           children: [
-            _editButton(),
-            divider,
+            Text(
+              'Experience',
+              style: headlineTextStyle,
+            ),
+
           ],
         ),
-      ],
-    ),
-  );
-}
+      );
+  }
 
-Widget _editButton(){
-  return BaseButton(
-    buttonText: 'Edit',
-    onPressed: () => null,
-  );
+  education(CV cv){
+    return
+      Container(
+        child: Column(
+          children: [
+            Text(
+              'Education',
+              style: headlineTextStyle,
+            ),
+
+          ],
+        ),
+      );
+  }
+
+  languageLvl(CV cv){
+    return
+      Container(
+        child: Column(
+          children: [
+            Text(
+              'Languages',
+              style: headlineTextStyle,
+            ),
+
+          ],
+        ),
+      );
+  }
+
+  additionalData(CV cv){
+    return
+      Container(
+        child: Column(
+          children: [
+            Text(
+              'Additional information',
+              style: headlineTextStyle,
+            ),
+
+          ],
+        ),
+      );
+  }
+
+  userInformation(User user){
+    return ResponsiveGridCol(
+      xs: 12,
+      sm: 12,
+      md: 8,
+      child: Center(
+        child: Table(
+          columnWidths: {
+            0: FlexColumnWidth(1.0),
+            1: FlexColumnWidth(4.0),
+          },
+          children: [
+            TableRow(
+              children: [
+                ParagraphCell(
+                  text: 'Age:',
+                ),
+                DataTableCell(
+                  text: user.birthDate != null ?
+                  '${Formatting.getAge(user.birthDate)}' :
+                  '',
+                )
+              ],
+            ),
+            TableRow(
+              children: [
+                ParagraphCell(
+                  text: 'City:',
+                ),
+                DataTableCell(
+                  text: user.city != null ?
+                  '${user.city}' :
+                  '',
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  userContactInformation(User user){
+    return ResponsiveGridCol(
+      xs: 12,
+      sm: 12,
+      md: 12,
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Contacts',
+              style: headlineTextStyle,
+            ),
+            Table(
+              columnWidths: {
+                0: FlexColumnWidth(1.0),
+                1: FlexColumnWidth(4.0),
+              },
+              children: [
+                TableRow(
+                    children: [
+                      ParagraphCell(
+                        text: 'Email:',
+                      ),
+                      DataTableCell(
+                        text: user.email != null ?
+                        '${user.email}' :
+                        '',
+                      )
+                    ]
+                ),
+                TableRow(
+                    children: [
+                      ParagraphCell(
+                        text: 'Phone number:',
+                      ),
+                      DataTableCell(
+                        text: user.phoneNumber != null ?
+                        '${user.phoneNumber}' :
+                        '',
+                      )
+                    ]
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  resumePhoto(User user){
+    return ResponsiveGridCol(
+      xs: 12,
+      sm: 12,
+      md: 4,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 5.0),
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                ),
+                child: Image.asset(
+                  'assets/images/no_photo_user.png',
+                  height: 100,
+                  width: 100,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  resumeBasicData(CV cv, User user){
+    return ResponsiveGridCol(
+      xs: 12,
+      sm: 12,
+      md: 12,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            child: Text(
+              'Resume updated: ${Formatting.formatDate(cv.publishDate.toLocal())}',
+              style: subtitleThemeTextStyle,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            child: Text(
+              '${user.firstName} ${user.lastName}',
+              style: headlineTextStyle,
+            ),
+          ),Container(
+            margin: EdgeInsets.symmetric(vertical: 5.0),
+            child: Text(
+              '${cv.name}',
+              style: headlineSecondaryTextStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _resumeOptions(BuildContext context, int owner){
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: Column(
+        children: [
+          context.select((User u) => u?.id) != owner ?
+          SizedBox.shrink() :
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _editButton(),
+              divider,
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  _editButton(){
+    return BaseButton(
+      buttonText: 'Edit',
+      onPressed: () => null,
+    );
+  }
 }
