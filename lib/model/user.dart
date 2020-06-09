@@ -46,9 +46,9 @@ class User {
       });
     }
 
-    organization = map.containsKey('organization') && map['organization'] != null
-        ? Organization.fromMap(map['organization'])
-        : null;
+    if(map.containsKey('organization') && map['organization'] != null){
+      organization = Organization.fromMap(map['organization']);
+    }
 
     if (map.containsKey('token')) {
       token = AuthorizationToken.fromMap(map['token']);
@@ -62,16 +62,14 @@ class User {
       'id': id,
       'username': username,
       'email': email,
-      'token': token.asMap(),
+      'token': token?.asMap(),
       'firstName': firstName,
       'lastName': lastName,
       'additionalName': additionalName,
       'phoneNumber': phoneNumber,
       'city': city,
       'birthDate': birthDate,
-      'organization': organization != null ?
-          organization.asMap() :
-          null,
+      'organization': organization?.asMap(),
       'cvs': cvs != null ?
           cvs.map((cv) => cv.asMap()).toList() :
           null,

@@ -7,7 +7,7 @@ import 'package:responsive_grid/responsive_grid.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget{
-  static const String route = '/profile';
+  static const String ROUTE = '/my';
 
   @override
   State<StatefulWidget> createState() => _ProfilePageState();
@@ -17,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage>{
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: [
+      children: [
         MenuBar(),
         SizedBox(
           height: 20,
@@ -48,13 +48,13 @@ class _ProfileState extends State<Profile>{
             context,
             img: 'img',
             itemName: 'My resumes',
-            onTap: () => Navigator.pushNamed(context, MyResumesPage.route),
+            onTap: () => Navigator.pushNamed(context, MyResumesPage.ROUTE),
           ),
           _profileItem(
             context,
             img: 'img',
             itemName: 'Personal data',
-            onTap: () => Navigator.pushNamed(context, AccountPage.route),
+            onTap: () => Navigator.pushNamed(context, AccountPage.ROUTE),
           ),
           _profileItem(
             context,
@@ -62,7 +62,7 @@ class _ProfileState extends State<Profile>{
             itemName: 'Log out',
             onTap: () {
               Store.instance.userController.logout();
-              Navigator.pushNamed(context, HomePage.route);
+              Navigator.pushNamed(context, HomePage.ROUTE);
             },
           ),
         ],

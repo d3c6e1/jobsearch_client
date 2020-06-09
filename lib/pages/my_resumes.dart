@@ -8,7 +8,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class MyResumesPage extends StatefulWidget{
-  static const String route = '/my/resumes';
+  static const String ROUTE = '/my/resumes';
 
   @override
   State<StatefulWidget> createState() => _MyResumesPageState();
@@ -18,7 +18,7 @@ class _MyResumesPageState extends State<MyResumesPage>{
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: [
+      children: [
         MenuBar(),
         SizedBox(
           height: 20,
@@ -38,17 +38,17 @@ class _MyResumes extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return context.select((User u) => u?.cvs?.isNotEmpty) ?
-        _ResumesList() :
+        ResumesList() :
         CreateResumeSection();
   }
 }
 
-class _ResumesList extends StatefulWidget{
+class ResumesList extends StatefulWidget{
   @override
-  __ResumesListState createState() => __ResumesListState();
+  _ResumesListState createState() => _ResumesListState();
 }
 
-class __ResumesListState extends State<_ResumesList> {
+class _ResumesListState extends State<ResumesList> {
   @override
   Widget build(BuildContext context) {
     final List<CV> resumes = context.select((User u) => u?.cvs);
@@ -75,7 +75,7 @@ class __ResumesListState extends State<_ResumesList> {
                   ),
                   hoverColor: ThemeConfig.lightShade,
                   onTap: ()=> locator<NavigationService>().navigateTo(
-                      ResumePage.route, queryParams: {
+                      ResumePage.ROUTE, queryParams: {
                         'id': resumes[index].id.toString(),
                       }),
                 ),

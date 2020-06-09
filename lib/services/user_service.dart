@@ -76,4 +76,24 @@ class UserService extends ServiceController<User> {
     }
     return null;
   }
+
+  Future<User> getUser(int id) async {
+    var req = Request.get("/users/$id");
+    var response = await store.executeClientRequest(req);
+
+    if (response.error != null) {
+      addError(response.error);
+      return null;
+    }
+
+    switch (response.statusCode) {
+      case 200: {
+        User user = User.fromMap(response.body);
+//        add(user);
+        return user;
+      } break;
+      default: addError(APIError(response.body["error"]));
+    }
+    return null;
+  }
 }

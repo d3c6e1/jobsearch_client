@@ -45,7 +45,7 @@ class Store {
     AuthorizationToken t = token ?? authenticatedUser?.token;
 
     if (t?.isExpired ?? true) {
-      throw new UnauthenticatedException();
+      throw UnauthenticatedException();
     }
 
     request.headers[HttpHeaders.authorizationHeader] = t.authorizationHeaderValue;

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/services/services.dart';
@@ -8,7 +7,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 
 
 class LoginPage extends StatefulWidget {
-  static const String route = '/login';
+  static const String ROUTE = '/login';
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -50,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(value)));
+    _scaffoldKey?.currentState?.showSnackBar(SnackBar(content: Text(value)));
   }
 
   @override
@@ -59,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pushNamed(context, HomePage.route);
+        Navigator.pop(context);
       }
     }, onError: (Object err) {
       setState(() {
@@ -79,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: <Widget>[
+      children: <Widget>[
         MenuBar(),
         SizedBox(height: 20.0,),
         _buildForm(),
@@ -91,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _buildForm(){
     return Container(
-      width: MediaQuery.of(context).size.width,
+    width: 500,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       MouseCursor(
                         child: GestureDetector(
-                          onTap: loading?null:()=>Navigator.pushNamed(context, SignUpPage.route),
+                          onTap: loading?null:()=>Navigator.pushNamed(context, SignUpPage.ROUTE),
                           child: Text(
                             "No account? Sign Up",
                             style: TextStyle(

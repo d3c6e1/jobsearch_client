@@ -1,7 +1,7 @@
-export 'signup.dart';
+export 'register.dart';
 export 'home.dart';
 export 'resume.dart';
-export 'docs.dart';
+export 'create_resume.dart';
 export 'organizations.dart';
 export 'profile.dart';
 export 'vacancies.dart';

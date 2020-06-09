@@ -35,7 +35,7 @@ class AppClient extends StatelessWidget {
             ],
           background: Container(color: Color(0xFFF5F5F5)),
         ),
-        initialRoute: HomePage.route,
+        initialRoute: HomePage.ROUTE,
         onGenerateRoute: generateRoute,
         navigatorKey: locator<NavigationService>().navigatorKey,
         theme: ThemeConfig.lightTheme,

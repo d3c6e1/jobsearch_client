@@ -5,28 +5,30 @@ import 'package:jobsearch_client/extensions/extensions.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
   var routingData = settings.name.getRoutingData; // Get the routing Data
   switch (routingData.route) {
-    case HomePage.route:
+    case HomePage.ROUTE:
       return _getPageRoute(HomePage(), settings);
       break;
-    case LoginPage.route:
+    case LoginPage.ROUTE:
       return _getPageRoute(LoginPage(), settings);
       break;
-    case SignUpPage.route:
+    case SignUpPage.ROUTE:
       return _getPageRoute(SignUpPage(), settings);
       break;
-    case ProfilePage.route:
+    case ProfilePage.ROUTE:
       return _getPageRoute(ProfilePage(), settings);
       break;
-    case AccountPage.route:
+    case AccountPage.ROUTE:
       return _getPageRoute(AccountPage(), settings);
       break;
-    case MyResumesPage.route:
+    case MyResumesPage.ROUTE:
       return _getPageRoute(MyResumesPage(), settings);
       break;
-    case ResumePage.route:
+    case ResumePage.ROUTE:
       var id = int.tryParse(routingData['id']); // Get the id from the data.
       return _getPageRoute(ResumePage(id: id), settings);
       break;
+    case CreateResumePage.ROUTE:
+      return _getPageRoute(CreateResumePage(), settings);
     default:
       return _getPageRoute(UnknownPage(), settings);
       break;

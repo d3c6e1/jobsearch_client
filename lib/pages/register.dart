@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/services/services.dart';
@@ -8,7 +7,7 @@ import 'package:jobsearch_client/utils/utils.dart';
 
 
 class SignUpPage extends StatefulWidget {
-  static const String route = '/register';
+  static const String ROUTE = '/register';
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -66,7 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     userSubscription = Store.instance.userController.listen((user) {
       if (mounted && user != null) {
-        Navigator.pushNamed(context, HomePage.route);
+        Navigator.pop(context);
       }
     }, onError: (Object err) {
       setState(() {
@@ -89,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: <Widget>[
+      children: <Widget>[
         MenuBar(),
         SizedBox(height: 20.0,),
         _buildForm(),
@@ -101,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   _buildForm(){
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: 500,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +194,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       MouseCursor(
                         child: GestureDetector(
                           onTap: loading ? null : (){
-                            Navigator.pushNamed(context, LoginPage.route);
+                            Navigator.pushNamed(context, LoginPage.ROUTE);
                           },
                           child: Text(
                             "Already signed up? Login",

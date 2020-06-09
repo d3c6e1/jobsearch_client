@@ -3,12 +3,12 @@ import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 
 class UnknownPage extends StatelessWidget{
-  static const String route = '/unknown';
+  static const String ROUTE = '/unknown';
 
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      widgets: <Widget>[
+      children: <Widget>[
         MenuBar(),
         Column(
           children: [
@@ -25,7 +25,7 @@ class UnknownPage extends StatelessWidget{
               child: Center(
                 child: BaseButton(
                   buttonText: 'Go home',
-                  onPressed: () => Navigator.popAndPushNamed(context, HomePage.route),
+                  onPressed: () => Navigator.popAndPushNamed(context, HomePage.ROUTE),
                 ),
               ),
             ),
