@@ -18,13 +18,11 @@ class UserService extends ServiceController<User> {
       "password": password,
       "grant_type": "password"
     }, contentType: ContentType("application", "x-www-form-urlencoded"));
-
     var response = await store.executeClientRequest(req);
     if (response.error != null) {
       addError(response.error);
       return null;
     }
-
     switch (response.statusCode) {
       case 200: return getAuthenticatedUser(token: AuthorizationToken.fromMap(response.body));
       default: addError(APIError(response.body["error"]));

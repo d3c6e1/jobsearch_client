@@ -14,6 +14,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case SignUpPage.ROUTE:
       return _getPageRoute(SignUpPage(), settings);
       break;
+    case ResumePage.ROUTE:
+      var id = int.tryParse(routingData['id']); // Get the id from the data.
+      return _getPageRoute(ResumePage(id: id), settings);
+      break;
     case ProfilePage.ROUTE:
       return _getPageRoute(ProfilePage(), settings);
       break;
@@ -22,10 +26,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       break;
     case MyResumesPage.ROUTE:
       return _getPageRoute(MyResumesPage(), settings);
-      break;
-    case ResumePage.ROUTE:
-      var id = int.tryParse(routingData['id']); // Get the id from the data.
-      return _getPageRoute(ResumePage(id: id), settings);
       break;
     case CreateResumePage.ROUTE:
       return _getPageRoute(CreateResumePage(), settings);
