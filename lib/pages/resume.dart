@@ -4,9 +4,9 @@ import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/services/services.dart';
-import 'package:jobsearch_client/utils/format.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:jobsearch_client/extensions/extensions.dart';
 
 class ResumePage extends StatefulWidget{
   static const ROUTE = '/resume';
@@ -204,7 +204,7 @@ class _ResumePageState extends State<ResumePage>{
                 ),
                 DataTableCell(
                   text: user.birthDate != null ?
-                  '${Formatting.getAge(user.birthDate)}' :
+                  '${user.birthDate.getAge}' :
                   '',
                 )
               ],
@@ -318,7 +318,7 @@ class _ResumePageState extends State<ResumePage>{
         children: [
           Container(
             child: Text(
-              'Resume updated: ${Formatting.formatDate(cv.publishDate.toLocal())}',
+              'Resume updated: ${cv.publishDate.toLocal().date}',
               style: subtitleThemeTextStyle,
             ),
           ),

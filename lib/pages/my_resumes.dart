@@ -6,6 +6,7 @@ import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/services/services.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
+import 'package:jobsearch_client/extensions/extensions.dart';
 
 class MyResumesPage extends StatefulWidget{
   static const String ROUTE = '/my/resumes';
@@ -67,7 +68,7 @@ class _ResumesListState extends State<ResumesList> {
                     style: headlineSecondaryTextStyle,
                   ),
                   subtitle: Text(
-                    'Published: ${Formatting.formatDate(resumes[index].publishDate.toLocal())}',
+                    'Published: ${resumes[index].publishDate.toLocal().date}',
                     style: subtitleTextStyle,
                   ),
                   trailing: DeleteResumeButton(

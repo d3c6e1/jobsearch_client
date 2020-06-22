@@ -61,7 +61,7 @@ class Store {
   Future<Response> executeRequest(Request request) async {
     try {
       if (request.method == "GET") {
-        return new Response.fromHTTPResponse(
+        return Response.fromHTTPResponse(
             await http.get(_baseURL + request.path, headers: request.headers));
       } else if (request.method == "POST") {
         var body = request.body;
@@ -71,8 +71,7 @@ class Store {
             && request.contentType.subType == "x-www-form-url-encoded") {
           body = (body as Map<String, String>).keys.map((k) => "$k=${Uri.encodeQueryComponent(body[k])}").join("&");
         }
-
-        return new Response.fromHTTPResponse(
+        return Response.fromHTTPResponse(
             await http.post(_baseURL + request.path, headers: request.headers, body: body));
       }
     } catch (e) {
@@ -84,7 +83,7 @@ class Store {
   /* Private */
 
   final StorageProvider storageProvider;
-  String _baseURL = "http://localhost:8888";
+  String _baseURL = "https://jobsearch-dart.herokuapp.com";
   User _authenticatedUser;
   String get _storedUserKey => "user.json";
 

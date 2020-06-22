@@ -6,6 +6,7 @@ import 'package:jobsearch_client/utils/theme_config.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:jobsearch_client/extensions/extensions.dart';
 
 class AccountPage extends StatefulWidget{
   static const String ROUTE = '/my/account';
@@ -130,7 +131,7 @@ Widget personalData(BuildContext context){
                       text: 'Birth date',
                     ),
                     DataTableCell(
-                      text: context.select((User u) => Formatting.formatDate(u?.birthDate))??'',
+                      text: context.select((User u) => u?.birthDate?.date)??'',
                     )
                   ],
                 ),

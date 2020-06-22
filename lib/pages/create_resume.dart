@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
-import 'package:jobsearch_client/pages/pages.dart';
+import 'package:jobsearch_client/extensions/extensions.dart';
 import 'package:jobsearch_client/services/services.dart';
 import 'package:jobsearch_client/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class CreateResumePage extends StatefulWidget{
-  static const String ROUTE = '/my/resumes/create';
+  static const String ROUTE = '/resume/create';
 
   @override
   State<StatefulWidget> createState() => _CreateResumePageState();
@@ -150,7 +150,7 @@ class _CreateResumePageState extends State<CreateResumePage>{
                     children: [
                       InputBox(
                         hintText: _jobDateFrom != null ?
-                          Formatting.formatDate(_jobDateFrom) :
+                        _jobDateFrom.date :
                           'Work period from',
                         boxWidth: 150,
                         textInputType: TextInputType.text,
@@ -174,7 +174,7 @@ class _CreateResumePageState extends State<CreateResumePage>{
                     children: [
                       InputBox(
                         hintText: _jobDateTo != null ?
-                          Formatting.formatDate(_jobDateTo) :
+                        _jobDateTo.date :
                           'Work period to',
                         boxWidth: 150,
                         textInputType: TextInputType.text,
@@ -231,7 +231,7 @@ class _CreateResumePageState extends State<CreateResumePage>{
                     children: [
                       InputBox(
                         hintText: _eduDateFrom != null ?
-                          Formatting.formatDate(_eduDateFrom) :
+                        _eduDateFrom.date :
                           'Period of study from',
                         boxWidth: 170,
                         textInputType: TextInputType.text,
@@ -255,7 +255,7 @@ class _CreateResumePageState extends State<CreateResumePage>{
                     children: [
                       InputBox(
                         hintText: _eduDateTo != null ?
-                          Formatting.formatDate(_eduDateTo) :
+                        _eduDateTo.date :
                           'Period of study to',
                         boxWidth: 170,
                         textInputType: TextInputType.text,
