@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
+import 'package:jobsearch_client/pages/my_documents.dart';
 import 'package:jobsearch_client/pages/pages.dart';
 import 'package:jobsearch_client/services/services.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -46,19 +47,51 @@ class _ProfileState extends State<Profile>{
         children: [
           _profileItem(
             context,
-            img: 'img',
+            img: Image.asset(
+              'assets/images/my_resumes.png',
+              height: 70,
+              width: 70,
+            ),
             itemName: 'My resumes',
             onTap: () => Navigator.pushNamed(context, MyResumesPage.ROUTE),
           ),
           _profileItem(
             context,
-            img: 'img',
+            img: Image.asset(
+              'assets/images/no_photo_user.png',
+              height: 70,
+              width: 70,
+            ),
             itemName: 'Personal data',
             onTap: () => Navigator.pushNamed(context, AccountPage.ROUTE),
           ),
           _profileItem(
             context,
-            img: 'img',
+            img: Image.asset(
+              'assets/images/my_documents.png',
+              height: 70,
+              width: 70,
+            ),
+            itemName: 'Documents',
+            onTap: () => Navigator.pushNamed(context, MyDocumentsPage.ROUTE),
+          ),
+          _profileItem(
+            context,
+            img: Image.asset(
+              'assets/images/organization.png',
+              height: 70,
+              width: 70,
+            ),
+            itemName: 'Organization',
+            onTap: () => Navigator.pushNamed(context, OrganizationPage.ROUTE),
+          ),
+          _profileItem(
+            context,
+            img: Image.asset(
+              'assets/images/logout.png',
+              height: 70,
+              width: 70,
+            ),
             itemName: 'Log out',
             onTap: () {
               Store.instance.userController.logout();
@@ -71,7 +104,7 @@ class _ProfileState extends State<Profile>{
   }
 
   ResponsiveGridCol _profileItem(BuildContext context,
-      {String img, String itemName, Function onTap}) {
+      {Image img, String itemName, Function onTap}) {
     return ResponsiveGridCol(
           xs: 12,
           sm: 6,
@@ -91,9 +124,7 @@ class _ProfileState extends State<Profile>{
                   children: [
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        img,
-                      ),
+                      child: img,
                     ),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 10.0),
