@@ -46,12 +46,15 @@ class MenuBar extends StatelessWidget {
     );
   }
 }
-
+//TODO
 class FindVacanciesButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseMenuButton(
-      onPressed: () => Navigator.pushNamed(context, MyResumesPage.ROUTE),
+      onPressed: () => Navigator.pushNamed(context,
+          context.read<User>() != null ? CreateResumePage.ROUTE
+              : SignUpPage.ROUTE
+      ),
       child: Text(
         'Find vacancies',
         style: buttonTextStyle,

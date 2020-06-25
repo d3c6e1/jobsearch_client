@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jobsearch_client/components/components.dart';
 import 'package:jobsearch_client/model/model.dart';
 import 'package:jobsearch_client/pages/pages.dart';
+import 'package:jobsearch_client/pdf_templates/pdf_templates.dart';
 import 'package:jobsearch_client/services/services.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -345,6 +346,7 @@ class _ResumePageState extends State<ResumePage>{
       margin: EdgeInsets.all(10),
       child: Column(
         children: [
+          _downloadButton(),
           context.select((User u) => u?.id) != owner ?
           SizedBox.shrink() :
           Column(
@@ -363,6 +365,13 @@ class _ResumePageState extends State<ResumePage>{
     return BaseButton(
       buttonText: 'Edit',
       onPressed: () => null,
+    );
+  }
+
+  _downloadButton(){
+    return BaseButton(
+      buttonText: 'Download',
+      onPressed: () => ResumePDF(cv).downloadWEB(),
     );
   }
 }
