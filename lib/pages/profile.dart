@@ -107,10 +107,13 @@ class _ProfileState extends State<Profile>{
       {Image img, String itemName, Function onTap}) {
     return ResponsiveGridCol(
           xs: 12,
-          sm: 6,
-          md: 4,
+          sm: 12,
+          md: 6,
+          lg: 4,
+          xl: 3,
           child: Container(
-            padding: EdgeInsets.all(10.0),
+            margin: EdgeInsets.all(3.0),
+            padding: EdgeInsets.all(5.0),
             decoration: BoxDecoration(
               border: Border.all(
                 color: textSecondary,

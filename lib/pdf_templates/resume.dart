@@ -15,7 +15,7 @@ class ResumePDF {
         pageFormat: PDF.PdfPageFormat.a4,
         build: (PDF.Context context) {
           return PDF.Center(
-            child: PDF.Text("Hello World"),
+            child: PDF.Text(_cv.asMap().toString()),
           ); // Center
         }
       )

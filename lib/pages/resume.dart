@@ -371,7 +371,7 @@ class _ResumePageState extends State<ResumePage>{
   _downloadButton(){
     return BaseButton(
       buttonText: 'Download',
-      onPressed: () => ResumePDF(null).downloadWEB(),
+      onPressed: () => ResumePDF(cv).downloadWEB(),
     );
   }
 }

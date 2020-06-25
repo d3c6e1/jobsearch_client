@@ -58,6 +58,7 @@ class _CreateResumePageState extends State<CreateResumePage>{
 
   submitForm(User user) async {
     FormState form = formKey.currentState;
+    print(form.toString());
     form.save();
     if (!form.validate()) {
       setState(() {
